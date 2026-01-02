@@ -1,5 +1,4 @@
 import { Check } from "lucide-react";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 
 interface ServiceCardProps {
@@ -12,42 +11,58 @@ interface ServiceCardProps {
 
 export function ServiceCard({ title, price, description, features, popular }: ServiceCardProps) {
   return (
-    <Card className={`border-none rounded-none flex flex-col h-full transition-all duration-300 hover:-translate-y-2 ${popular ? 'bg-white text-black' : 'bg-white/5 text-white'}`}>
-      <CardHeader>
-        {popular && <div className="text-xs font-bold uppercase tracking-widest text-gray-500 mb-2">Most Popular</div>}
-        <CardTitle className="font-display text-3xl uppercase">{title}</CardTitle>
-        <div className="mt-4 mb-2">
-          <span className="text-4xl font-bold">{price}</span>
-          <span className={`text-sm ml-1 ${popular ? 'text-gray-600' : 'text-gray-400'}`}>/month</span>
+    <div 
+      className={`relative flex flex-col h-full p-8 rounded-2xl transition-all duration-300 ${
+        popular 
+          ? 'bg-white text-black' 
+          : 'bg-white/[0.03] border border-white/10 text-white hover:border-white/20'
+      }`}
+      data-testid={`card-service-${title.toLowerCase()}`}
+    >
+      {popular && (
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+          <span className="bg-black text-white text-xs font-medium px-4 py-1.5 rounded-full">
+            Most Popular
+          </span>
         </div>
-        <CardDescription className={popular ? 'text-gray-600' : 'text-gray-400'}>
+      )}
+      
+      <div className="mb-6">
+        <h3 className="text-xl font-semibold mb-2">{title}</h3>
+        <p className={`text-sm ${popular ? 'text-gray-600' : 'text-gray-400'}`}>
           {description}
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="flex-grow">
-        <ul className="space-y-3 mt-4">
-          {features.map((feature, i) => (
-            <li key={i} className="flex items-start gap-3 text-sm">
-              <Check className={`w-5 h-5 shrink-0 ${popular ? 'text-black' : 'text-white'}`} />
-              <span>{feature}</span>
-            </li>
-          ))}
-        </ul>
-      </CardContent>
-      <CardFooter>
-        <Button 
-          className={`w-full rounded-none font-bold uppercase tracking-wider py-6 ${
-            popular 
-              ? 'bg-black text-white hover:bg-gray-800' 
-              : 'bg-white text-black hover:bg-gray-200'
-          }`}
-          onClick={() => {
-            document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-          }}
-        >
-          Choose Plan
-        </Button>
-      </CardFooter>
-    </Card>
+        </p>
+      </div>
+
+      <div className="mb-8">
+        <span className="text-4xl font-semibold">{price}</span>
+        <span className={`text-sm ml-1 ${popular ? 'text-gray-500' : 'text-gray-500'}`}>/month</span>
+      </div>
+
+      <ul className="space-y-4 mb-8 flex-grow">
+        {features.map((feature, i) => (
+          <li key={i} className="flex items-start gap-3 text-sm">
+            <div className={`mt-0.5 rounded-full p-0.5 ${popular ? 'bg-black' : 'bg-white'}`}>
+              <Check className={`w-3 h-3 ${popular ? 'text-white' : 'text-black'}`} />
+            </div>
+            <span className={popular ? 'text-gray-700' : 'text-gray-300'}>{feature}</span>
+          </li>
+        ))}
+      </ul>
+
+      <Button 
+        className={`w-full rounded-full font-medium py-6 ${
+          popular 
+            ? 'bg-black text-white hover:bg-gray-800' 
+            : 'bg-white text-black hover:bg-gray-100'
+        }`}
+        onClick={() => {
+          document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
+        }}
+        data-testid={`button-choose-${title.toLowerCase()}`}
+      >
+        Choose {title}
+      </Button>
+    </div>
   );
 }

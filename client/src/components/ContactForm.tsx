@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
-import { Loader2 } from "lucide-react";
+import { Loader2, ArrowRight } from "lucide-react";
 
 export function ContactForm() {
   const mutation = useContact();
@@ -30,19 +30,20 @@ export function ContactForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           <FormField
             control={form.control}
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="uppercase text-xs tracking-widest text-gray-400">Name</FormLabel>
+                <FormLabel className="text-sm text-gray-400">Name</FormLabel>
                 <FormControl>
                   <Input 
-                    placeholder="Your Name" 
+                    placeholder="Your name" 
                     {...field} 
-                    className="bg-white/5 border-white/10 text-white rounded-none focus:ring-white/20 h-12"
+                    className="bg-white/5 border-white/10 text-white rounded-xl focus:ring-white/20 h-12 placeholder:text-gray-500"
+                    data-testid="input-name"
                   />
                 </FormControl>
                 <FormMessage />
@@ -54,12 +55,13 @@ export function ContactForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="uppercase text-xs tracking-widest text-gray-400">Email</FormLabel>
+                <FormLabel className="text-sm text-gray-400">Email</FormLabel>
                 <FormControl>
                   <Input 
-                    placeholder="your@email.com" 
+                    placeholder="you@example.com" 
                     {...field} 
-                    className="bg-white/5 border-white/10 text-white rounded-none focus:ring-white/20 h-12"
+                    className="bg-white/5 border-white/10 text-white rounded-xl focus:ring-white/20 h-12 placeholder:text-gray-500"
+                    data-testid="input-email"
                   />
                 </FormControl>
                 <FormMessage />
@@ -72,12 +74,13 @@ export function ContactForm() {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="uppercase text-xs tracking-widest text-gray-400">Goals & Message</FormLabel>
+              <FormLabel className="text-sm text-gray-400">Message</FormLabel>
               <FormControl>
                 <Textarea 
-                  placeholder="Tell me about your fitness goals..." 
+                  placeholder="Tell us about your fitness goals..." 
                   {...field} 
-                  className="bg-white/5 border-white/10 text-white rounded-none focus:ring-white/20 min-h-[150px] resize-none"
+                  className="bg-white/5 border-white/10 text-white rounded-xl focus:ring-white/20 min-h-[140px] resize-none placeholder:text-gray-500"
+                  data-testid="input-message"
                 />
               </FormControl>
               <FormMessage />
@@ -87,14 +90,18 @@ export function ContactForm() {
         <Button 
           type="submit" 
           disabled={mutation.isPending}
-          className="w-full md:w-auto px-8 py-6 bg-white text-black hover:bg-gray-200 rounded-none font-bold uppercase tracking-wider text-sm transition-all"
+          className="bg-white text-black hover:bg-gray-100 rounded-full font-medium px-8 py-6 text-sm transition-all group"
+          data-testid="button-submit"
         >
           {mutation.isPending ? (
             <>
               <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending...
             </>
           ) : (
-            "Send Message"
+            <>
+              Send Message
+              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </>
           )}
         </Button>
       </form>
