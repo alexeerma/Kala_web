@@ -27,6 +27,15 @@ export default function Home() {
 
       {/* Hero Section */}
       <section id="hero" className="relative min-h-screen flex items-center justify-center pt-20 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop" 
+            alt="" 
+            className="w-full h-full object-cover opacity-30"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black"></div>
+        </div>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.03)_0%,transparent_70%)]"></div>
         
         <div className="container relative z-10 px-6 py-24 md:py-32">
