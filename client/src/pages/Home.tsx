@@ -82,24 +82,32 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Feature Pills */}
-      <div className="border-y border-white/5 bg-white/[0.02]">
-        <div className="container mx-auto px-6 py-8">
-          <div className="flex flex-wrap items-center justify-center gap-3 md:gap-4">
-            {[
-              "Personal Training",
-              "Nutrition Plans", 
-              "Online Coaching",
-              "Group Sessions",
-              "Body Analysis",
-              "Progress Tracking"
-            ].map((feature, i) => (
-              <span 
-                key={i} 
-                className="px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-gray-300"
-              >
-                {feature}
-              </span>
+      {/* Feature Pills - Sliding Marquee */}
+      <div className="border-y border-white/5 bg-white/[0.02] overflow-hidden">
+        <div className="py-6">
+          <div className="flex animate-marquee">
+            {[...Array(2)].map((_, setIndex) => (
+              <div key={setIndex} className="flex shrink-0 gap-4 px-2">
+                {[
+                  "Personal Training",
+                  "Nutrition Plans", 
+                  "Online Coaching",
+                  "Group Sessions",
+                  "Body Analysis",
+                  "Progress Tracking",
+                  "Strength Building",
+                  "Weight Loss",
+                  "Flexibility Training",
+                  "HIIT Workouts"
+                ].map((feature, i) => (
+                  <span 
+                    key={`${setIndex}-${i}`} 
+                    className="px-5 py-2.5 rounded-full bg-white/5 border border-white/10 text-sm text-gray-300 whitespace-nowrap"
+                  >
+                    {feature}
+                  </span>
+                ))}
+              </div>
             ))}
           </div>
         </div>
