@@ -287,7 +287,7 @@ export default function Home() {
       </section>
 
       {/* Testimonials */}
-      <section id="testimonials" className="py-20 md:py-28 bg-white/[0.02]">
+      <section id="testimonials" className="py-20 md:py-28 bg-white/[0.02] overflow-hidden">
         <div className="container mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400 mb-6">
@@ -297,44 +297,54 @@ export default function Home() {
               Mida kliendid ütlevad
             </h2>
           </div>
-          
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {[
-              {
-                quote: "Ma ei uskunud, et suudan sellised tulemused saavutada vaid 3 kuuga. Distsipliin, mida siin õppisin, muutis mu elu.",
-                author: "Kadri Tamm",
-                role: "Ettevõtja"
-              },
-              {
-                quote: "Tähelepanu detailidele vormi ja tehnika osas on võrratu. Mingeid vigastusi, ainult puhas progress.",
-                author: "Marten Kask",
-                role: "Tarkvaraarendaja"
-              },
-              {
-                quote: "See on väljakutsuv, see on tasustav ja see on absoluutselt iga treeningu väärt. Parim investeering endasse.",
-                author: "Tõnis Rebane",
-                role: "Arhitekt"
-              }
-            ].map((story, i) => (
-              <motion.div 
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="bg-white/[0.03] border border-white/10 rounded-2xl p-8"
-                data-testid={`card-testimonial-${i}`}
-              >
-                <p className="text-gray-300 mb-6 leading-relaxed">
-                  "{story.quote}"
-                </p>
-                <div>
-                  <div className="font-medium text-white">{story.author}</div>
-                  <div className="text-sm text-gray-500">{story.role}</div>
+        </div>
+        
+        <div className="flex animate-marquee-slow">
+          {[...Array(2)].map((_, setIndex) => (
+            <div key={setIndex} className="flex shrink-0 gap-6 px-3">
+              {[
+                {
+                  quote: "Ma ei uskunud, et suudan sellised tulemused saavutada vaid 3 kuuga. Distsipliin, mida siin õppisin, muutis mu elu.",
+                  author: "Kadri Tamm",
+                  role: "Ettevõtja"
+                },
+                {
+                  quote: "Tähelepanu detailidele vormi ja tehnika osas on võrratu. Mingeid vigastusi, ainult puhas progress.",
+                  author: "Marten Kask",
+                  role: "Tarkvaraarendaja"
+                },
+                {
+                  quote: "See on väljakutsuv, see on tasustav ja see on absoluutselt iga treeningu väärt. Parim investeering endasse.",
+                  author: "Tõnis Rebane",
+                  role: "Arhitekt"
+                },
+                {
+                  quote: "Professionaalne lähenemine ja individuaalne tähelepanu igal treeningul. Soovitan soojalt!",
+                  author: "Liisa Põld",
+                  role: "Jurist"
+                },
+                {
+                  quote: "Lõpuks ometi treener, kes mõistab minu eesmärke ja aitab neid saavutada. Olen väga tänulik!",
+                  author: "Priit Saar",
+                  role: "Insener"
+                }
+              ].map((story, i) => (
+                <div 
+                  key={`${setIndex}-${i}`}
+                  className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 w-[350px] shrink-0"
+                  data-testid={`card-testimonial-${setIndex}-${i}`}
+                >
+                  <p className="text-gray-300 mb-6 leading-relaxed">
+                    "{story.quote}"
+                  </p>
+                  <div>
+                    <div className="font-medium text-white">{story.author}</div>
+                    <div className="text-sm text-gray-500">{story.role}</div>
+                  </div>
                 </div>
-              </motion.div>
-            ))}
-          </div>
+              ))}
+            </div>
+          ))}
         </div>
       </section>
 
