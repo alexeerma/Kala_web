@@ -6,7 +6,18 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Loader2, ArrowRight } from "lucide-react";
+
+const packages = [
+  { value: "1x-personaaltreening", label: "1x Personaaltreening - 50€" },
+  { value: "personaaltreening-sobraga", label: "Personaaltreening sõbraga - 75€" },
+  { value: "7x-personaaltreening", label: "7x Personaaltreening - 350€" },
+  { value: "7x-personaaltreening-sobraga", label: "7x Personaaltreening sõbraga - 495€" },
+  { value: "treeningkava", label: "Treeningkava - 60€" },
+  { value: "online-juhendamine", label: "Online juhendamine - 150€/kuu" },
+  { value: "online-juhendamine-3-kuud", label: "Online juhendamine 3 kuud - 450€" },
+];
 
 export function ContactForm() {
   const mutation = useContact();
@@ -16,6 +27,7 @@ export function ContactForm() {
     defaultValues: {
       name: "",
       email: "",
+      selectedPackage: "",
       message: "",
     },
   });
@@ -69,6 +81,37 @@ export function ContactForm() {
             )}
           />
         </div>
+        <FormField
+          control={form.control}
+          name="selectedPackage"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel className="text-sm text-gray-400">Pakett (valikuline)</FormLabel>
+              <Select onValueChange={field.onChange} value={field.value || ""}>
+                <FormControl>
+                  <SelectTrigger 
+                    className="bg-white/5 border-white/10 text-white rounded-xl focus:ring-white/20 h-12"
+                    data-testid="select-package"
+                  >
+                    <SelectValue placeholder="Vali pakett" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent className="bg-zinc-900 border-white/10">
+                  {packages.map((pkg) => (
+                    <SelectItem 
+                      key={pkg.value} 
+                      value={pkg.value}
+                      className="text-white focus:bg-white/10 focus:text-white"
+                    >
+                      {pkg.label}
+                    </SelectItem>
+                  ))}
+                </SelectContent>
+              </Select>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
         <FormField
           control={form.control}
           name="message"
