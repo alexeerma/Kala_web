@@ -83,21 +83,10 @@ export default function Kontakt() {
                 </div>
 
                 <div className="mt-12 p-6 rounded-2xl bg-white/[0.03] border border-white/10">
-                  <h3 className="font-medium text-white mb-3">Treeningute ajad</h3>
-                  <div className="space-y-2 text-sm text-gray-400">
-                    <div className="flex justify-between">
-                      <span>Esmaspäev - Reede</span>
-                      <span className="text-white">07:00 - 21:00</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Laupäev</span>
-                      <span className="text-white">09:00 - 18:00</span>
-                    </div>
-                    <div className="flex justify-between">
-                      <span>Pühapäev</span>
-                      <span className="text-white">10:00 - 16:00</span>
-                    </div>
-                  </div>
+                  <h3 className="font-medium text-white mb-3">Treeningute asukohad</h3>
+                  <p className="text-sm text-gray-400 leading-relaxed">
+                    Eratreeningud toimuvad Tartu Ülikooli Akadeemilises Spordiklubis, Tartu MyFitness klubides või vastavalt kokkuleppele Sinu valitud jõusaalis Tartus ja Tallinnas.
+                  </p>
                 </div>
               </motion.div>
               
