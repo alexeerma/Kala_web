@@ -6,6 +6,7 @@ import { Link, useLocation } from "wouter";
 
 const NAV_LINKS = [
   { name: "Minust", href: "/minust", isAnchor: false },
+  { name: "Online coaching", href: "/online", isAnchor: false },
   { name: "Hinnakiri", href: "/hinnakiri", isAnchor: false },
   { name: "Kontakt", href: "/kontakt", isAnchor: false },
 ];

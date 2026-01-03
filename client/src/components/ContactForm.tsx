@@ -11,7 +11,7 @@ import { ArrowRight, Loader2, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
 // Formspree vorm - loo tasuta konto formspree.io ja asenda see oma vormi ID-ga
-const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mdakdjbw";
 
 const packages = [
   { value: "1x-personaaltreening", label: "1x Personaaltreening - 50€" },

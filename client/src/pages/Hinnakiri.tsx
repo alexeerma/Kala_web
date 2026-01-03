@@ -3,10 +3,11 @@ import { motion } from "framer-motion";
 import { Check, ArrowRight, Instagram, Facebook, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
+import kalarow from "@assets/Kalarow.jpeg";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
 };
 
 interface PriceCardProps {
@@ -15,63 +16,172 @@ interface PriceCardProps {
   description: string;
   features: string[];
   popular?: boolean;
+  wide?: boolean;
 }
 
-function PriceCard({ title, price, description, features, popular }: PriceCardProps) {
+function PriceCard({
+  title,
+  price,
+  description,
+  features,
+  popular,
+  wide,
+}: PriceCardProps) {
+  if (wide) {
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        className={`relative flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12 p-8 lg:px-12 lg:py-10 rounded-2xl transition-all duration-300 overflow-hidden group ${
+          popular
+            ? "bg-white text-black"
+            : "bg-white/[0.03] border border-white/10 text-white hover:border-white/20"
+        }`}
+        data-testid={`card-price-${title.toLowerCase().replace(/\s+/g, "-")}`}
+      >
+        {/* Subtle glow effect */}
+        <div
+          className={`absolute inset-0 bg-gradient-to-r from-transparent ${
+            popular ? "via-black/[0.05]" : "via-white/[0.08]"
+          } to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out -translate-x-full group-hover:translate-x-full`}
+        ></div>
+
+        {/* Left section - Title, Description, Price */}
+        <div className="flex-shrink-0 lg:w-64 relative z-10">
+          <h3 className="text-xl lg:text-2xl font-semibold mb-2">{title}</h3>
+          <p
+            className={`text-sm leading-relaxed mb-4 ${
+              popular ? "text-gray-600" : "text-gray-400"
+            }`}
+          >
+            {description}
+          </p>
+          <span className="text-3xl lg:text-4xl font-semibold">{price}</span>
+        </div>
+
+        {/* Middle section - Features in grid */}
+        <div className="flex-grow relative z-10">
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {features.map((feature, i) => (
+              <li key={i} className="flex items-start gap-3 text-sm">
+                <div
+                  className={`mt-0.5 rounded-full p-0.5 flex-shrink-0 ${
+                    popular ? "bg-black" : "bg-white"
+                  }`}
+                >
+                  <Check
+                    className={`w-3 h-3 ${
+                      popular ? "text-white" : "text-black"
+                    }`}
+                  />
+                </div>
+                <span className={popular ? "text-gray-700" : "text-gray-300"}>
+                  {feature}
+                </span>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {/* Right section - Button */}
+        <div className="flex-shrink-0 lg:w-48 relative z-10">
+          <Link href="/kontakt">
+            <Button
+              className={`w-full rounded-full font-medium py-6 ${
+                popular
+                  ? "bg-black text-white hover:bg-gray-800"
+                  : "bg-white text-black hover:bg-gray-100"
+              }`}
+              data-testid={`button-choose-${title
+                .toLowerCase()
+                .replace(/\s+/g, "-")}`}
+            >
+              Võta ühendust
+            </Button>
+          </Link>
+        </div>
+      </motion.div>
+    );
+  }
+
   return (
-    <motion.div 
+    <motion.div
       initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      className={`relative flex flex-col h-full p-8 rounded-2xl transition-all duration-300 ${
-        popular 
-          ? 'bg-white text-black' 
-          : 'bg-white/[0.03] border border-white/10 text-white hover:border-white/20'
+      className={`relative flex flex-col h-full p-8 rounded-2xl transition-all duration-300 overflow-hidden group ${
+        popular
+          ? "bg-white text-black"
+          : "bg-white/[0.03] border border-white/10 text-white hover:border-white/20"
       }`}
-      data-testid={`card-price-${title.toLowerCase().replace(/\s+/g, '-')}`}
+      data-testid={`card-price-${title.toLowerCase().replace(/\s+/g, "-")}`}
     >
+      {/* Subtle glow effect */}
+      <div
+        className={`absolute inset-0 bg-gradient-to-r from-transparent ${
+          popular ? "via-black/[0.05]" : "via-white/[0.08]"
+        } to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out -translate-x-full group-hover:translate-x-full`}
+      ></div>
+
       {popular && (
-        <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+        <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-20">
           <span className="bg-black text-white text-xs font-medium px-4 py-1.5 rounded-full">
             Populaarseim
           </span>
         </div>
       )}
-      
-      <div className="mb-6">
+
+      <div className="mb-6 relative z-10">
         <h3 className="text-xl font-semibold mb-2">{title}</h3>
-        <p className={`text-sm leading-relaxed ${popular ? 'text-gray-600' : 'text-gray-400'}`}>
+        <p
+          className={`text-sm leading-relaxed ${
+            popular ? "text-gray-600" : "text-gray-400"
+          }`}
+        >
           {description}
         </p>
       </div>
 
-      <div className="mb-8">
+      <div className="mb-8 relative z-10">
         <span className="text-4xl font-semibold">{price}</span>
       </div>
 
-      <ul className="space-y-4 mb-8 flex-grow">
+      <ul className="space-y-4 mb-8 flex-grow relative z-10">
         {features.map((feature, i) => (
           <li key={i} className="flex items-start gap-3 text-sm">
-            <div className={`mt-0.5 rounded-full p-0.5 ${popular ? 'bg-black' : 'bg-white'}`}>
-              <Check className={`w-3 h-3 ${popular ? 'text-white' : 'text-black'}`} />
+            <div
+              className={`mt-0.5 rounded-full p-0.5 ${
+                popular ? "bg-black" : "bg-white"
+              }`}
+            >
+              <Check
+                className={`w-3 h-3 ${popular ? "text-white" : "text-black"}`}
+              />
             </div>
-            <span className={popular ? 'text-gray-700' : 'text-gray-300'}>{feature}</span>
+            <span className={popular ? "text-gray-700" : "text-gray-300"}>
+              {feature}
+            </span>
           </li>
         ))}
       </ul>
 
-      <Link href="/kontakt">
-        <Button 
-          className={`w-full rounded-full font-medium py-6 ${
-            popular 
-              ? 'bg-black text-white hover:bg-gray-800' 
-              : 'bg-white text-black hover:bg-gray-100'
-          }`}
-          data-testid={`button-choose-${title.toLowerCase().replace(/\s+/g, '-')}`}
-        >
-          Võta ühendust
-        </Button>
-      </Link>
+      <div className="relative z-10">
+        <Link href="/kontakt">
+          <Button
+            className={`w-full rounded-full font-medium py-6 ${
+              popular
+                ? "bg-black text-white hover:bg-gray-800"
+                : "bg-white text-black hover:bg-gray-100"
+            }`}
+            data-testid={`button-choose-${title
+              .toLowerCase()
+              .replace(/\s+/g, "-")}`}
+          >
+            Võta ühendust
+          </Button>
+        </Link>
+      </div>
     </motion.div>
   );
 }
@@ -85,8 +195,8 @@ export default function Hinnakiri() {
       features: [
         "Saame tuttavaks",
         "Paneme paika esialgsed eesmärgid",
-        "Õpime esmased vajalikud harjutused"
-      ]
+        "Õpime esmased vajalikud harjutused",
+      ],
     },
     {
       title: "Personaaltreening sõbraga",
@@ -96,8 +206,8 @@ export default function Hinnakiri() {
         "Saame tuttavaks",
         "Paneme paika esialgsed eesmärgid Teie mõlema jaoks",
         "Õpime esmased vajalikud harjutused",
-        "Motiveeriv keskkond"
-      ]
+        "Motiveeriv keskkond",
+      ],
     },
     {
       title: "7x Personaaltreening",
@@ -110,8 +220,8 @@ export default function Hinnakiri() {
         "Harjutuste tehnika paraneb",
         "Räägime toitumise ja taastumise olulisusest",
         "Energiatase on tõusnud",
-        "Omandad harjutused iseseisvaks treenimiseks"
-      ]
+        "Omandad harjutused iseseisvaks treenimiseks",
+      ],
     },
     {
       title: "7x Personaaltreening sõbraga",
@@ -123,19 +233,19 @@ export default function Hinnakiri() {
         "Harjutuste tehnika paraneb",
         "Räägime toitumise ja taastumise olulisusest",
         "Energiatase on tõusnud",
-        "Omandate mõlemad harjutused iseseisvaks või koos treenimiseks"
-      ]
+        "Omandate mõlemad harjutused iseseisvaks või koos treenimiseks",
+      ],
     },
     {
       title: "Treeningkava",
-      price: "60€",
+      price: "60€/kuu",
       description: "Personaalne treeningkava",
       features: [
         "Sinu võimetele vastav",
         "Eesmärgipärane",
         "Progresseeruv",
-        "Sinu eripäradele üles ehitatud"
-      ]
+        "Kestus - 4 nädalat",
+      ],
     },
     {
       title: "Online juhendamine",
@@ -146,8 +256,8 @@ export default function Hinnakiri() {
         "Privaatne ja personaalne lähenemine",
         "Pidev tagasiside ja nõustamine",
         "Videoanalüüsid",
-        "Toitumisnõustamine"
-      ]
+        "Toitumisnõustamine",
+      ],
     },
     {
       title: "Online juhendamine 3 kuud",
@@ -159,9 +269,27 @@ export default function Hinnakiri() {
         "Pidev tagasiside ja nõustamine",
         "Videoanalüüsid",
         "Toitumisnõustamine",
-        "Säästad 15% võrreldes kuupõhisega"
-      ]
-    }
+        "Säästad 15% võrreldes kuupõhisega",
+      ],
+    },
+    {
+      title: "Kuupõhine liikmesus 1-treening nädalas",
+      price: "Alates 180€",
+      description: "Püsikliendi kuupõhised paketid",
+      features: ["1-treening nädalas - 45 eur treening"],
+    },
+    {
+      title: "Kuupõhine liikmesus 2-treeningut nädalas",
+      price: "Alates 320€",
+      description: "Püsikliendi kuupõhised paketid",
+      features: ["2-treeningut nädalas - 40 eur treening"],
+    },
+    {
+      title: "Kuupõhine liikmesus 3-treeningut nädalas",
+      price: "Alates 420€",
+      description: "Püsikliendi kuupõhised paketid",
+      features: ["3-treeningut nädalas - 35 eur treening"],
+    },
   ];
 
   return (
@@ -171,11 +299,7 @@ export default function Hinnakiri() {
       {/* Hero */}
       <section className="pt-32 pb-16 md:pt-40 md:pb-20">
         <div className="container mx-auto px-6 text-center">
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeInUp}
-          >
+          <motion.div initial="hidden" animate="visible" variants={fadeInUp}>
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400 mb-6">
               Hinnakiri
             </span>
@@ -183,34 +307,93 @@ export default function Hinnakiri() {
               Vali endale sobiv pakett
             </h1>
             <p className="max-w-2xl mx-auto text-gray-400 text-lg md:text-xl leading-relaxed">
-              Personaalsed treeningpaketid igale tasemele. Alusta oma teekonda parema tervise ja enesetunde poole.
+              Personaalsed treeningpaketid igale tasemele. Alusta oma teekonda
+              parema tervise ja enesetunde poole.
             </p>
           </motion.div>
         </div>
       </section>
 
-      {/* Pricing Grid */}
+      {/* Pricing Grid - First 4 cards + Treeningkava */}
       <section className="py-16 md:py-24">
         <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {packages.map((pkg, i) => (
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {packages.slice(0, 4).map((pkg, i) => (
               <PriceCard key={i} {...pkg} />
+            ))}
+            {/* Treeningkava spanning all 4 columns */}
+            <div className="lg:col-span-4">
+              <PriceCard {...packages[4]} wide={true} />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Online coaching section */}
+      <section className="py-16 md:py-24 border-t border-white/5">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-semibold text-white text-center mb-4">
+            Online coaching
+          </h2>
+          <p className="text-gray-300 text-lg mb-8 max-w-xl mx-auto text-center">
+            Online coaching on personaalne ja paindlik nõustamine, mis jõuab
+            Sinuni kõikjal, kus on internetiühendus. Koostan sulle personaalse,
+            arengule keskenduva treeningkava. Kirjutan sulle iga trenni ette,
+            sina vaid treeni kus ja millal sulle sobib.
+          </p>
+          <div className="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto mt-12">
+            {packages.slice(5, 7).map((pkg, i) => (
+              <div key={`online-${i}`} className="w-full md:w-[calc(50%-12px)] lg:w-[calc(50%-12px)]">
+                <PriceCard {...pkg} />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Püsika paketid */}
+      <section className="py-16 md:py-24 border-t border-white/5">
+        <div className="container mx-auto px-6">
+          <h2 className="text-3xl md:text-4xl font-semibold text-white text-center mb-4">
+            Püsikliendi kuupõhised paketid
+          </h2>
+          <p className="text-gray-300 text-lg mb-8 max-w-xl mx-auto text-center">
+            Sobivus- püsiklientidele Treeningud- toimuvad kliendiga kokkulepitud
+            aegadel. <br />
+            Tühistamine- vähemalt 24h ette, hilise etteteatamisega
+            treening loetakse kasutatuks.
+          </p>
+          <div
+            className={`grid gap-6 max-w-6xl mx-auto mt-12 ${
+              packages.slice(7).length === 1
+                ? "grid-cols-1 md:grid-cols-1 lg:grid-cols-1 justify-items-center"
+                : "md:grid-cols-2 lg:grid-cols-3"
+            }`}
+          >
+            {packages.slice(7).map((pkg, i) => (
+              <PriceCard key={`membership-${i}`} {...pkg} />
             ))}
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-16 md:py-24 border-t border-white/5">
-        <div className="container mx-auto px-6 text-center">
+      <section className="relative py-20 md:py-28 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img src={kalarow} alt="" className="w-full h-full object-cover" />
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/70 to-black/80"></div>
+        </div>
+
+        <div className="container mx-auto px-6 relative z-10 text-center">
           <h2 className="text-3xl md:text-4xl font-semibold text-white mb-4">
             Valmis alustama?
           </h2>
-          <p className="text-gray-400 text-lg mb-8 max-w-xl mx-auto">
+          <p className="text-gray-300 text-lg mb-8 max-w-xl mx-auto">
             Võta minuga ühendust ja leiame koos Sulle sobiva lahenduse.
           </p>
           <Link href="/kontakt">
-            <Button 
+            <Button
               className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-6 font-medium text-base group"
               data-testid="button-cta-contact"
             >
@@ -231,16 +414,36 @@ export default function Hinnakiri() {
               </span>
             </Link>
             <div className="text-sm text-gray-500">
-              © {new Date().getFullYear()} RasmusKala. Kõik õigused kaitstud. | <a href="https://alexeerma.ee" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Web by Alexeerma</a>
+              © {new Date().getFullYear()} RasmusKala. Kõik õigused kaitstud. |{" "}
+              <a
+                href="https://alexeerma.ee"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="hover:text-white transition-colors"
+              >
+                Web by Alexeerma
+              </a>
             </div>
             <div className="flex gap-4">
-              <a href="#" className="text-gray-500 hover:text-white transition-colors" data-testid="link-social-instagram">
+              <a
+                href="#"
+                className="text-gray-500 hover:text-white transition-colors"
+                data-testid="link-social-instagram"
+              >
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-500 hover:text-white transition-colors" data-testid="link-social-facebook">
+              <a
+                href="#"
+                className="text-gray-500 hover:text-white transition-colors"
+                data-testid="link-social-facebook"
+              >
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-500 hover:text-white transition-colors" data-testid="link-social-linkedin">
+              <a
+                href="#"
+                className="text-gray-500 hover:text-white transition-colors"
+                data-testid="link-social-linkedin"
+              >
                 <Linkedin className="w-5 h-5" />
               </a>
             </div>

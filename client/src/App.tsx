@@ -8,11 +8,13 @@ import Hinnakiri from "@/pages/Hinnakiri";
 import Kontakt from "@/pages/Kontakt";
 import Minust from "@/pages/Minust";
 import NotFound from "@/pages/not-found";
+import Online from "./pages/Online";
 
 function Router() {
   return (
     <Switch>
       <Route path="/" component={Home} />
+      <Route path="/online" component={Online} />
       <Route path="/hinnakiri" component={Hinnakiri} />
       <Route path="/kontakt" component={Kontakt} />
       <Route path="/minust" component={Minust} />

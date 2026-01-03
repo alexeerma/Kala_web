@@ -33,13 +33,13 @@ export default function Kontakt() {
               Valmis alustama oma teekonda parema tervise poole? Täida vorm ja võtan Sinuga ühendust 24 tunni jooksul.
             </p>
             <div className="flex justify-center gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors" data-testid="link-hero-instagram">
+              <a href="https://www.instagram.com/rasmuskala/" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors" data-testid="link-hero-instagram">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors" data-testid="link-hero-facebook">
+              <a href="https://www.facebook.com/rasmus.kalaa" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors" data-testid="link-hero-facebook">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors" data-testid="link-hero-linkedin">
+              <a href="https://www.linkedin.com/in/rasmus-kala-534295157/" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors" data-testid="link-hero-linkedin">
                 <Linkedin className="w-5 h-5" />
               </a>
             </div>
@@ -91,7 +91,8 @@ export default function Kontakt() {
                         </div>
                         <div>
                           <h3 className="font-medium text-white text-sm mb-0.5">Telefon</h3>
-                          <p className="text-gray-400 text-sm">+372 5129 123</p>
+                          <p className="text-gray-400 text-sm">+372 569 24511
+                          </p>
                         </div>
                       </div>
                     </div>
@@ -129,11 +130,16 @@ export default function Kontakt() {
                   </div>
                 </div>
 
-                <div className="mt-10 p-6 rounded-2xl bg-white/[0.03] border border-white/10">
-                  <h3 className="font-medium text-white mb-3">Treeningute asukohad</h3>
-                  <p className="text-sm text-gray-400 leading-relaxed">
-                    Eratreeningud toimuvad Tartu Ülikooli Akadeemilises Spordiklubis, Tartu MyFitness klubides või vastavalt kokkuleppele Sinu valitud jõusaalis Tartus ja Tallinnas.
-                  </p>
+                <div className="mt-10 p-6 rounded-2xl bg-white/[0.03] border border-white/10 relative overflow-hidden group">
+                  {/* Subtle glow effect */}
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.08] to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out -translate-x-full group-hover:translate-x-full"></div>
+                  
+                  <div className="relative z-10">
+                    <h3 className="font-medium text-white mb-3">Treeningute asukohad</h3>
+                    <p className="text-sm text-gray-400 leading-relaxed">
+                      Eratreeningud toimuvad Tartu Ülikooli Akadeemilises Spordiklubis, Tartu MyFitness klubides või vastavalt kokkuleppele Sinu valitud jõusaalis Tartus ja Tallinnas.
+                    </p>
+                  </div>
                 </div>
               </motion.div>
               
@@ -141,10 +147,15 @@ export default function Kontakt() {
                 initial={{ opacity: 0, x: 30 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.3 }}
-                className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 lg:p-10"
+                className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 lg:p-10 relative overflow-hidden group"
               >
-                <h3 className="text-xl font-semibold text-white mb-6">Saada sõnum</h3>
-                <ContactForm />
+                {/* Subtle glow effect */}
+                <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.08] to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out -translate-x-full group-hover:translate-x-full"></div>
+                
+                <div className="relative z-10">
+                  <h3 className="text-xl font-semibold text-white mb-6">Saada sõnum</h3>
+                  <ContactForm />
+                </div>
               </motion.div>
             </div>
           </div>
