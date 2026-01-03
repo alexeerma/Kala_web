@@ -146,11 +146,11 @@ export default function Kontakt() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <Link href="/">
               <span className="text-xl font-semibold text-white cursor-pointer">
-                FitPro
+                RasmusKala
               </span>
             </Link>
             <div className="text-sm text-gray-500">
-              © {new Date().getFullYear()} FitPro Treening. Kõik õigused kaitstud.
+              © {new Date().getFullYear()} RasmusKala. Kõik õigused kaitstud.
             </div>
             <div className="flex gap-6">
               {['Instagram', 'Twitter', 'YouTube'].map(social => (

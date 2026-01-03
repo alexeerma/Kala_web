@@ -63,7 +63,7 @@ export function Navbar() {
             className="text-xl font-semibold text-white tracking-tight cursor-pointer"
             data-testid="link-logo"
           >
-            FitPro
+            RasmusKala
           </span>
         </Link>
 
