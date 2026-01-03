@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Target, Zap, Users } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
+import aboutImage from "@assets/Kalav3_1767425407543.jpg";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -46,7 +47,7 @@ export default function Minust() {
               <div className="relative">
                 <div className="aspect-[4/5] rounded-3xl overflow-hidden bg-white/5">
                   <img 
-                    src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=2070&auto=format&fit=crop" 
+                    src={aboutImage} 
                     alt="Personal Trainer" 
                     className="w-full h-full object-cover"
                   />

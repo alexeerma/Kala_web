@@ -5,6 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { useState } from "react";
 import heroImage from "@assets/Kala_tossu_1767425326571.jpg";
+import aboutImage from "@assets/Kalav3_1767425407543.jpg";
 
 const faqs = [
   {
@@ -207,7 +208,7 @@ export default function Home() {
             >
               <div className="aspect-[4/5] rounded-3xl overflow-hidden bg-white/5">
                 <img 
-                  src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=2070&auto=format&fit=crop" 
+                  src={aboutImage} 
                   alt="Personal Trainer" 
                   className="w-full h-full object-cover"
                 />
