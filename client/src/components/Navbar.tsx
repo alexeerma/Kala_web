@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Link, useLocation } from "wouter";
 
 const NAV_LINKS = [
-  { name: "Minust", href: "#about", isAnchor: true },
+  { name: "Minust", href: "/minust", isAnchor: false },
   { name: "Hinnakiri", href: "/hinnakiri", isAnchor: false },
   { name: "Kontakt", href: "/kontakt", isAnchor: false },
 ];
