@@ -305,28 +305,23 @@ export default function Home() {
               {[
                 {
                   quote: "Ma ei uskunud, et suudan sellised tulemused saavutada vaid 3 kuuga. Distsipliin, mida siin õppisin, muutis mu elu.",
-                  author: "Kadri Tamm",
-                  role: "Ettevõtja"
+                  author: "Kadri"
                 },
                 {
                   quote: "Tähelepanu detailidele vormi ja tehnika osas on võrratu. Mingeid vigastusi, ainult puhas progress.",
-                  author: "Marten Kask",
-                  role: "Tarkvaraarendaja"
+                  author: "Marten"
                 },
                 {
                   quote: "See on väljakutsuv, see on tasustav ja see on absoluutselt iga treeningu väärt. Parim investeering endasse.",
-                  author: "Tõnis Rebane",
-                  role: "Arhitekt"
+                  author: "Tõnis"
                 },
                 {
                   quote: "Professionaalne lähenemine ja individuaalne tähelepanu igal treeningul. Soovitan soojalt!",
-                  author: "Liisa Põld",
-                  role: "Jurist"
+                  author: "Liisa"
                 },
                 {
                   quote: "Lõpuks ometi treener, kes mõistab minu eesmärke ja aitab neid saavutada. Olen väga tänulik!",
-                  author: "Priit Saar",
-                  role: "Insener"
+                  author: "Priit"
                 }
               ].map((story, i) => (
                 <div 
@@ -337,10 +332,7 @@ export default function Home() {
                   <p className="text-gray-300 mb-6 leading-relaxed">
                     "{story.quote}"
                   </p>
-                  <div>
-                    <div className="font-medium text-white">{story.author}</div>
-                    <div className="text-sm text-gray-500">{story.role}</div>
-                  </div>
+                  <div className="font-medium text-white">{story.author}</div>
                 </div>
               ))}
             </div>
