@@ -1,13 +1,12 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { insertContactRequestSchema, type InsertContactRequest } from "@shared/schema";
-import { useContact } from "@/hooks/use-contact";
+import { z } from "zod";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Loader2, ArrowRight } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 
 const packages = [
   { value: "1x-personaaltreening", label: "1x Personaaltreening - 50€" },
@@ -19,11 +18,18 @@ const packages = [
   { value: "online-juhendamine-3-kuud", label: "Online juhendamine 3 kuud - 450€" },
 ];
 
+const contactFormSchema = z.object({
+  name: z.string().min(1, "Nimi on kohustuslik"),
+  email: z.string().email("Palun sisesta kehtiv e-posti aadress"),
+  selectedPackage: z.string().optional(),
+  message: z.string().min(1, "Sõnum on kohustuslik"),
+});
+
+type ContactFormData = z.infer<typeof contactFormSchema>;
+
 export function ContactForm() {
-  const mutation = useContact();
-  
-  const form = useForm<InsertContactRequest>({
-    resolver: zodResolver(insertContactRequestSchema),
+  const form = useForm<ContactFormData>({
+    resolver: zodResolver(contactFormSchema),
     defaultValues: {
       name: "",
       email: "",
@@ -32,12 +38,14 @@ export function ContactForm() {
     },
   });
 
-  const onSubmit = (data: InsertContactRequest) => {
-    mutation.mutate(data, {
-      onSuccess: () => {
-        form.reset();
-      },
-    });
+  const onSubmit = (data: ContactFormData) => {
+    const packageLabel = packages.find(p => p.value === data.selectedPackage)?.label || "Pole valitud";
+    const subject = encodeURIComponent(`Kontaktvorm: ${data.name}`);
+    const body = encodeURIComponent(
+      `Nimi: ${data.name}\nE-post: ${data.email}\nPakett: ${packageLabel}\n\nSõnum:\n${data.message}`
+    );
+    window.location.href = `mailto:info@rasmuskala.ee?subject=${subject}&body=${body}`;
+    form.reset();
   };
 
   return (
@@ -132,20 +140,11 @@ export function ContactForm() {
         />
         <Button 
           type="submit" 
-          disabled={mutation.isPending}
           className="bg-white text-black hover:bg-gray-100 rounded-full font-medium px-8 py-6 text-sm transition-all group"
           data-testid="button-submit"
         >
-          {mutation.isPending ? (
-            <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Saadan...
-            </>
-          ) : (
-            <>
-              Saada sõnum
-              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-            </>
-          )}
+          Saada sõnum
+          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
         </Button>
       </form>
     </Form>
