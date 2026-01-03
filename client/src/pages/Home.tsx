@@ -4,6 +4,7 @@ import { ArrowRight, Sparkles, Target, Zap, Users, ChevronRight, ChevronDown } f
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import { useState } from "react";
+import heroImage from "@assets/Kala_tossu_1767425326571.jpg";
 
 const faqs = [
   {
@@ -85,11 +86,11 @@ export default function Home() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=2070&auto=format&fit=crop" 
+            src={heroImage} 
             alt="" 
-            className="w-full h-full object-cover opacity-30"
+            className="w-full h-full object-cover opacity-50"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/80 to-black"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/60 to-black"></div>
         </div>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.03)_0%,transparent_70%)]"></div>
         
