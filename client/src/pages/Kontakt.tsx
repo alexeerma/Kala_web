@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { ContactForm } from "@/components/ContactForm";
 import { motion } from "framer-motion";
-import { MapPin, Mail, Phone, Building2, CreditCard } from "lucide-react";
+import { MapPin, Mail, Phone, Building2, CreditCard, Instagram, Facebook, Linkedin } from "lucide-react";
 import { Link } from "wouter";
 
 const fadeInUp = {
@@ -29,9 +29,20 @@ export default function Kontakt() {
             <h1 className="text-4xl md:text-6xl font-semibold text-white mb-6">
               Võta minuga ühendust
             </h1>
-            <p className="text-gray-400 text-lg md:text-xl leading-relaxed">
+            <p className="text-gray-400 text-lg md:text-xl leading-relaxed mb-6">
               Valmis alustama oma teekonda parema tervise poole? Täida vorm ja võtan Sinuga ühendust 24 tunni jooksul.
             </p>
+            <div className="flex justify-center gap-4">
+              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors" data-testid="link-hero-instagram">
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors" data-testid="link-hero-facebook">
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a href="#" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors" data-testid="link-hero-linkedin">
+                <Linkedin className="w-5 h-5" />
+              </a>
+            </div>
           </motion.div>
         </div>
       </section>
@@ -152,17 +163,16 @@ export default function Kontakt() {
             <div className="text-sm text-gray-500">
               © {new Date().getFullYear()} RasmusKala. Kõik õigused kaitstud. | <a href="https://alexeerma.ee" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Web by Alexeerma</a>
             </div>
-            <div className="flex gap-6">
-              {['Instagram', 'Twitter', 'YouTube'].map(social => (
-                <a 
-                  key={social} 
-                  href="#" 
-                  className="text-gray-500 hover:text-white text-sm transition-colors"
-                  data-testid={`link-social-${social.toLowerCase()}`}
-                >
-                  {social}
-                </a>
-              ))}
+            <div className="flex gap-4">
+              <a href="#" className="text-gray-500 hover:text-white transition-colors" data-testid="link-social-instagram">
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-gray-500 hover:text-white transition-colors" data-testid="link-social-facebook">
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-gray-500 hover:text-white transition-colors" data-testid="link-social-linkedin">
+                <Linkedin className="w-5 h-5" />
+              </a>
             </div>
           </div>
         </div>

@@ -1,6 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { motion } from "framer-motion";
-import { Check, ArrowRight } from "lucide-react";
+import { Check, ArrowRight, Instagram, Facebook, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 
@@ -233,17 +233,16 @@ export default function Hinnakiri() {
             <div className="text-sm text-gray-500">
               © {new Date().getFullYear()} RasmusKala. Kõik õigused kaitstud. | <a href="https://alexeerma.ee" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Web by Alexeerma</a>
             </div>
-            <div className="flex gap-6">
-              {['Instagram', 'Twitter', 'YouTube'].map(social => (
-                <a 
-                  key={social} 
-                  href="#" 
-                  className="text-gray-500 hover:text-white text-sm transition-colors"
-                  data-testid={`link-social-${social.toLowerCase()}`}
-                >
-                  {social}
-                </a>
-              ))}
+            <div className="flex gap-4">
+              <a href="#" className="text-gray-500 hover:text-white transition-colors" data-testid="link-social-instagram">
+                <Instagram className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-gray-500 hover:text-white transition-colors" data-testid="link-social-facebook">
+                <Facebook className="w-5 h-5" />
+              </a>
+              <a href="#" className="text-gray-500 hover:text-white transition-colors" data-testid="link-social-linkedin">
+                <Linkedin className="w-5 h-5" />
+              </a>
             </div>
           </div>
         </div>
