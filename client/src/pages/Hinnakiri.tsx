@@ -231,7 +231,7 @@ export default function Hinnakiri() {
               </span>
             </Link>
             <div className="text-sm text-gray-500">
-              © {new Date().getFullYear()} RasmusKala. Kõik õigused kaitstud.
+              © {new Date().getFullYear()} RasmusKala. Kõik õigused kaitstud. | <a href="https://alexeerma.ee" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Web by Alexeerma</a>
             </div>
             <div className="flex gap-6">
               {['Instagram', 'Twitter', 'YouTube'].map(social => (
