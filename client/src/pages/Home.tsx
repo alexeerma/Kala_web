@@ -1,8 +1,64 @@
 import { Navbar } from "@/components/Navbar";
 import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Target, Zap, Users, ChevronRight } from "lucide-react";
+import { ArrowRight, Sparkles, Target, Zap, Users, ChevronRight, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
+import { useState } from "react";
+
+const faqs = [
+  {
+    question: "Kas personaaltreening sobib algajatele?",
+    answer: "Jah, personaaltreening sobib suurepäraselt algajatele! Kohandan kõik harjutused vastavalt Sinu tasemele ja õpetan õiget tehnikat algusest peale. See on tegelikult parim viis alustada, kuna väldid vigade tekkimist ja saad tugeva aluse."
+  },
+  {
+    question: "Kui tihti peaksin treenima?",
+    answer: "Optimaalne treeningsagedus sõltub Sinu eesmärkidest ja elustiilist. Algajatele soovitan alustada 2-3 treeninguga nädalas, et keha saaks piisavalt taastuda. Edasijõudnutele võib sobida 4-5 treeningut nädalas."
+  },
+  {
+    question: "Kas ma pean järgima kindlat dieeti?",
+    answer: "Ei pea järgima ranget dieeti. Aitan Sul luua jätkusuutlikke toitumisharjumusi, mis sobivad Sinu elustiiliga. Fookus on tasakaalustatud toitumisel, mitte piiravatel dieetidel."
+  },
+  {
+    question: "Kui kiiresti tulemusi näen?",
+    answer: "Esimesi muutusi enesetundes ja energiatasemes märkad juba esimeste nädalate jooksul. Nähtavad füüsilised muutused ilmnevad tavaliselt 4-8 nädala pärast järjepideva treenimisega."
+  },
+  {
+    question: "Mis juhtub, kui pean treeningu tühistama?",
+    answer: "Treeningu saab tühistada vähemalt 24 tundi ette ilma lisatasuta. Hilisema tühistamise korral läheb treening kaotsi. Erandkorras leiame alati lahenduse."
+  },
+  {
+    question: "Kas pakud ka online treeninguid?",
+    answer: "Jah! Pakun nii online juhendamist kui ka personaalseid treeningkavasid. Online juhendamine sisaldab kuupõhist kava, pidevat tagasisidet, videoanalüüse ja toitumisnõustamist."
+  },
+  {
+    question: "Milline varustus mul vaja on?",
+    answer: "Treeninguks piisab mugavatest spordiriietest ja tossudest. Kõik vajalikud vahendid on jõusaalis olemas. Koduseks treeninguks soovitan soetada kummilindid ja joogateki."
+  },
+  {
+    question: "Kas saab treenida ka sõbraga koos?",
+    answer: "Kindlasti! Pakun spetsiaalseid paarispersonaaltreeningu pakette. See on suurepärane viis hoida motivatsiooni ja jagada kulusid sõbraga."
+  }
+];
+
+function FAQItem({ question, answer }: { question: string; answer: string }) {
+  const [isOpen, setIsOpen] = useState(false);
+
+  return (
+    <div className="border-b border-white/10">
+      <button
+        onClick={() => setIsOpen(!isOpen)}
+        className="w-full py-5 flex items-center justify-between text-left hover-elevate active-elevate-2 rounded-lg px-2 -mx-2"
+        data-testid={`faq-${question.slice(0, 20).toLowerCase().replace(/\s+/g, '-')}`}
+      >
+        <span className="font-medium text-white pr-4">{question}</span>
+        <ChevronDown className={`w-5 h-5 text-gray-400 shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
+      </button>
+      <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 pb-5' : 'max-h-0'}`}>
+        <p className="text-gray-400 leading-relaxed px-2">{answer}</p>
+      </div>
+    </div>
+  );
+}
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -280,8 +336,36 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <section id="faq" className="py-20 md:py-28">
+        <div className="container mx-auto px-6">
+          <div className="text-center max-w-2xl mx-auto mb-12">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400 mb-6">
+              KKK
+            </span>
+            <h2 className="text-3xl md:text-5xl font-semibold text-white mb-4">
+              Korduma kippuvad küsimused
+            </h2>
+          </div>
+          
+          <div className="max-w-3xl mx-auto">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="bg-white/[0.02] border border-white/10 rounded-2xl p-6 md:p-8">
+                {faqs.map((faq, i) => (
+                  <FAQItem key={i} question={faq.question} answer={faq.answer} />
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
-      <section className="py-20 md:py-28">
+      <section className="py-20 md:py-28 bg-white/[0.02]">
         <div className="container mx-auto px-6">
           <div className="max-w-3xl mx-auto text-center">
             <h2 className="text-3xl md:text-5xl font-semibold text-white mb-6 leading-tight">

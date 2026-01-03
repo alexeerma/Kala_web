@@ -1,73 +1,15 @@
 import { Navbar } from "@/components/Navbar";
 import { motion } from "framer-motion";
-import { Target, Zap, Users, ChevronDown } from "lucide-react";
+import { Target, Zap, Users } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } }
 };
 
-const faqs = [
-  {
-    question: "Kas personaaltreening sobib algajatele?",
-    answer: "Jah, personaaltreening sobib suurepäraselt algajatele! Kohandan kõik harjutused vastavalt Sinu tasemele ja õpetan õiget tehnikat algusest peale. See on tegelikult parim viis alustada, kuna väldid vigade tekkimist ja saad tugeva aluse."
-  },
-  {
-    question: "Kui tihti peaksin treenima?",
-    answer: "Optimaalne treeningsagedus sõltub Sinu eesmärkidest ja elustiilist. Algajatele soovitan alustada 2-3 treeninguga nädalas, et keha saaks piisavalt taastuda. Edasijõudnutele võib sobida 4-5 treeningut nädalas."
-  },
-  {
-    question: "Kas ma pean järgima kindlat dieeti?",
-    answer: "Ei pea järgima ranget dieeti. Aitan Sul luua jätkusuutlikke toitumisharjumusi, mis sobivad Sinu elustiiliga. Fookus on tasakaalustatud toitumisel, mitte piiravatel dieetidel."
-  },
-  {
-    question: "Kui kiiresti tulemusi näen?",
-    answer: "Esimesi muutusi enesetundes ja energiatasemes märkad juba esimeste nädalate jooksul. Nähtavad füüsilised muutused ilmnevad tavaliselt 4-8 nädala pärast järjepideva treenimisega."
-  },
-  {
-    question: "Mis juhtub, kui pean treeningu tühistama?",
-    answer: "Treeningu saab tühistada vähemalt 24 tundi ette ilma lisatasuta. Hilisema tühistamise korral läheb treening kaotsi. Erandkorras leiame alati lahenduse."
-  },
-  {
-    question: "Kas pakud ka online treeninguid?",
-    answer: "Jah! Pakun nii online juhendamist kui ka personaalseid treeningkavasid. Online juhendamine sisaldab kuupõhist kava, pidevat tagasisidet, videoanalüüse ja toitumisnõustamist."
-  },
-  {
-    question: "Milline varustus mul vaja on?",
-    answer: "Treeninguks piisab mugavatest spordiriietest ja tossudest. Kõik vajalikud vahendid on jõusaalis olemas. Koduseks treeninguks soovitan soetada kummilindid ja joogateki."
-  },
-  {
-    question: "Kas saab treenida ka sõbraga koos?",
-    answer: "Kindlasti! Pakun spetsiaalseid paarispersonaaltreeningu pakette. See on suurepärane viis hoida motivatsiooni ja jagada kulusid sõbraga."
-  }
-];
-
-function FAQItem({ question, answer }: { question: string; answer: string }) {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="border-b border-white/10">
-      <button
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full py-5 flex items-center justify-between text-left hover-elevate active-elevate-2 rounded-lg px-2 -mx-2"
-        data-testid={`faq-${question.slice(0, 20).toLowerCase().replace(/\s+/g, '-')}`}
-      >
-        <span className="font-medium text-white pr-4">{question}</span>
-        <ChevronDown className={`w-5 h-5 text-gray-400 shrink-0 transition-transform ${isOpen ? 'rotate-180' : ''}`} />
-      </button>
-      <div className={`overflow-hidden transition-all duration-300 ${isOpen ? 'max-h-96 pb-5' : 'max-h-0'}`}>
-        <p className="text-gray-400 leading-relaxed px-2">{answer}</p>
-      </div>
-    </div>
-  );
-}
-
 export default function Minust() {
-  const [activeTab, setActiveTab] = useState<'about' | 'faq'>('about');
-
   return (
     <div className="min-h-screen bg-background text-foreground">
       <Navbar />
@@ -91,177 +33,122 @@ export default function Minust() {
         </div>
       </section>
 
-      {/* Tabs */}
-      <section className="pb-8">
+      {/* About Content */}
+      <section className="py-16 md:py-24">
         <div className="container mx-auto px-6">
-          <div className="flex justify-center gap-2">
-            <button
-              onClick={() => setActiveTab('about')}
-              className={`px-6 py-3 rounded-full font-medium text-sm transition-all ${
-                activeTab === 'about' 
-                  ? 'bg-white text-black' 
-                  : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10'
-              }`}
-              data-testid="tab-about"
+          <div className="max-w-4xl mx-auto">
+            {/* Intro Section */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="grid lg:grid-cols-2 gap-12 items-center mb-20"
             >
-              Minu lugu
-            </button>
-            <button
-              onClick={() => setActiveTab('faq')}
-              className={`px-6 py-3 rounded-full font-medium text-sm transition-all ${
-                activeTab === 'faq' 
-                  ? 'bg-white text-black' 
-                  : 'bg-white/5 text-gray-400 hover:text-white hover:bg-white/10'
-              }`}
-              data-testid="tab-faq"
+              <div className="relative">
+                <div className="aspect-[4/5] rounded-3xl overflow-hidden bg-white/5">
+                  <img 
+                    src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=2070&auto=format&fit=crop" 
+                    alt="Personal Trainer" 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+              </div>
+              
+              <div>
+                <h2 className="text-2xl md:text-3xl font-semibold text-white mb-6 leading-tight">
+                  Minu taust
+                </h2>
+                <div className="space-y-4 text-gray-400 leading-relaxed">
+                  <p>
+                    Sport ja liikuv eluviis on mulle südamelähedane valdkond. Sellest tulenevalt läksin omandama teadmisi ülikooli, et saada baasteadmised sportlaste ja tava-harrastajate treenimisel.
+                  </p>
+                  <p>
+                    Selle aja jooksul sain selgeks, et just selles valdkonnas tahan ennast realiseerida ja treenida nii noor kui ka täiskasvanud sportlaste kehalist võimekust vastavalt nende valitud spordialale.
+                  </p>
+                  <p>
+                    Mul on olemas kogemus ÜKE treenerina pallimängualade (jalgpall, korvpall), reketialade (tennis, sulgpall) kui ka üksik-sportlaste treenimisel (kergejõustik, maadlus, ratsutajad).
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* What I Do */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.1 }}
+              className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 md:p-10 mb-12"
             >
-              Korduma kippuvad küsimused
-            </button>
+              <h2 className="text-2xl font-semibold text-white mb-6">
+                Mida ma teen?
+              </h2>
+              <div className="space-y-4 text-gray-400 leading-relaxed">
+                <p>
+                  Viin läbi <span className="text-white font-medium">ÜKE treeninguid</span> ehk üldkehalise ettevalmistuse treeninguid. ÜKE treeningute läbiviimisel ja planeerimisel pean oluliseks kogu keha läbitöötamist.
+                </p>
+                <p>
+                  Erineva tasemega sportlaste ja harrastajatega tegelemisel lähtun nende kehalisest hetkeseisust, spordialast ja soovitud eesmärkidest, et välja töötada individuaalne tegevuskava.
+                </p>
+                <p>
+                  Treenerina ma tahan, et iga sportlane saaks kasutada enda täit potentsiaali füüsiliste võimete arendamisel. <span className="text-white font-medium">Iga inimene on erinev ja vajab individuaalset lähenemist.</span>
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Philosophy */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="mb-12"
+            >
+              <h2 className="text-2xl font-semibold text-white mb-6">
+                Minu treeningfilosoofia
+              </h2>
+              <div className="space-y-4 text-gray-400 leading-relaxed">
+                <p>
+                  Minu treeningute filosoofia on see, et <span className="text-white font-medium">treening peab olema nauditav ja arendav</span>. Läbi selle tekib elustiili muutus, mis tagab järjepidevuse ja jõudmise soovitud tulemusteni.
+                </p>
+                <p>
+                  Kõige olulisemaks pean treeneritöö juures seda, et saan aidata inimestel jõuda sinna, kus treeningutest saab nende igapäeva osa.
+                </p>
+              </div>
+
+              <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
+                {[
+                  { icon: Target, label: "Individuaalne" },
+                  { icon: Target, label: "Eesmärgipärane" },
+                  { icon: Zap, label: "Jätkusuutlik" },
+                  { icon: Users, label: "Arenev" },
+                ].map((item, i) => (
+                  <div key={i} className="flex flex-col items-center gap-3 text-center p-4 rounded-2xl bg-white/[0.03] border border-white/10">
+                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
+                      <item.icon className="w-4 h-4 text-white" />
+                    </div>
+                    <span className="text-sm text-gray-300">{item.label}</span>
+                  </div>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* CTA */}
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.3 }}
+              className="text-center"
+            >
+              <Link href="/kontakt">
+                <Button 
+                  className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-6 font-medium"
+                  data-testid="button-about-contact"
+                >
+                  Võta ühendust
+                </Button>
+              </Link>
+            </motion.div>
           </div>
         </div>
       </section>
-
-      {/* About Tab Content */}
-      {activeTab === 'about' && (
-        <section className="py-16 md:py-24">
-          <div className="container mx-auto px-6">
-            <div className="max-w-4xl mx-auto">
-              {/* Intro Section */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="grid lg:grid-cols-2 gap-12 items-center mb-20"
-              >
-                <div className="relative">
-                  <div className="aspect-[4/5] rounded-3xl overflow-hidden bg-white/5">
-                    <img 
-                      src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=2070&auto=format&fit=crop" 
-                      alt="Personal Trainer" 
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
-                </div>
-                
-                <div>
-                  <h2 className="text-2xl md:text-3xl font-semibold text-white mb-6 leading-tight">
-                    Minu taust
-                  </h2>
-                  <div className="space-y-4 text-gray-400 leading-relaxed">
-                    <p>
-                      Sport ja liikuv eluviis on mulle südamelähedane valdkond. Sellest tulenevalt läksin omandama teadmisi ülikooli, et saada baasteadmised sportlaste ja tava-harrastajate treenimisel.
-                    </p>
-                    <p>
-                      Selle aja jooksul sain selgeks, et just selles valdkonnas tahan ennast realiseerida ja treenida nii noor kui ka täiskasvanud sportlaste kehalist võimekust vastavalt nende valitud spordialale.
-                    </p>
-                    <p>
-                      Mul on olemas kogemus ÜKE treenerina pallimängualade (jalgpall, korvpall), reketialade (tennis, sulgpall) kui ka üksik-sportlaste treenimisel (kergejõustik, maadlus, ratsutajad).
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* What I Do */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 }}
-                className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 md:p-10 mb-12"
-              >
-                <h2 className="text-2xl font-semibold text-white mb-6">
-                  Mida ma teen?
-                </h2>
-                <div className="space-y-4 text-gray-400 leading-relaxed">
-                  <p>
-                    Viin läbi <span className="text-white font-medium">ÜKE treeninguid</span> ehk üldkehalise ettevalmistuse treeninguid. ÜKE treeningute läbiviimisel ja planeerimisel pean oluliseks kogu keha läbitöötamist.
-                  </p>
-                  <p>
-                    Erineva tasemega sportlaste ja harrastajatega tegelemisel lähtun nende kehalisest hetkeseisust, spordialast ja soovitud eesmärkidest, et välja töötada individuaalne tegevuskava.
-                  </p>
-                  <p>
-                    Treenerina ma tahan, et iga sportlane saaks kasutada enda täit potentsiaali füüsiliste võimete arendamisel. <span className="text-white font-medium">Iga inimene on erinev ja vajab individuaalset lähenemist.</span>
-                  </p>
-                </div>
-              </motion.div>
-
-              {/* Philosophy */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.2 }}
-                className="mb-12"
-              >
-                <h2 className="text-2xl font-semibold text-white mb-6">
-                  Minu treeningfilosoofia
-                </h2>
-                <div className="space-y-4 text-gray-400 leading-relaxed">
-                  <p>
-                    Minu treeningute filosoofia on see, et <span className="text-white font-medium">treening peab olema nauditav ja arendav</span>. Läbi selle tekib elustiili muutus, mis tagab järjepidevuse ja jõudmise soovitud tulemusteni.
-                  </p>
-                  <p>
-                    Kõige olulisemaks pean treeneritöö juures seda, et saan aidata inimestel jõuda sinna, kus treeningutest saab nende igapäeva osa.
-                  </p>
-                </div>
-
-                <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {[
-                    { icon: Target, label: "Individuaalne" },
-                    { icon: Target, label: "Eesmärgipärane" },
-                    { icon: Zap, label: "Jätkusuutlik" },
-                    { icon: Users, label: "Arenev" },
-                  ].map((item, i) => (
-                    <div key={i} className="flex flex-col items-center gap-3 text-center p-4 rounded-2xl bg-white/[0.03] border border-white/10">
-                      <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
-                        <item.icon className="w-4 h-4 text-white" />
-                      </div>
-                      <span className="text-sm text-gray-300">{item.label}</span>
-                    </div>
-                  ))}
-                </div>
-              </motion.div>
-
-              {/* CTA */}
-              <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.3 }}
-                className="text-center"
-              >
-                <Link href="/kontakt">
-                  <Button 
-                    className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-6 font-medium"
-                    data-testid="button-about-contact"
-                  >
-                    Võta ühendust
-                  </Button>
-                </Link>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-      )}
-
-      {/* FAQ Tab Content */}
-      {activeTab === 'faq' && (
-        <section className="py-16 md:py-24">
-          <div className="container mx-auto px-6">
-            <div className="max-w-3xl mx-auto">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-              >
-                <h2 className="text-2xl md:text-3xl font-semibold text-white mb-8 text-center">
-                  Korduma kippuvad küsimused
-                </h2>
-                <div className="bg-white/[0.02] border border-white/10 rounded-2xl p-6 md:p-8">
-                  {faqs.map((faq, i) => (
-                    <FAQItem key={i} question={faq.question} answer={faq.answer} />
-                  ))}
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
-      )}
 
       {/* Footer */}
       <footer className="py-12 border-t border-white/5">
