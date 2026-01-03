@@ -4,10 +4,10 @@ import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 
 const NAV_LINKS = [
-  { name: "About", href: "#about" },
-  { name: "Services", href: "#services" },
-  { name: "Testimonials", href: "#testimonials" },
-  { name: "Contact", href: "#contact" },
+  { name: "Minust", href: "#about" },
+  { name: "Teenused", href: "#services" },
+  { name: "Tagasiside", href: "#testimonials" },
+  { name: "Kontakt", href: "#contact" },
 ];
 
 export function Navbar() {
@@ -70,7 +70,7 @@ export function Navbar() {
             }}
             data-testid="button-signup"
           >
-            Get Started
+            Alusta kohe
           </Button>
         </div>
 
@@ -104,7 +104,7 @@ export function Navbar() {
               }}
               data-testid="button-mobile-signup"
             >
-              Get Started
+              Alusta kohe
             </Button>
           </div>
         </div>

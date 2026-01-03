@@ -37,10 +37,10 @@ export function ContactForm() {
             name="name"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-sm text-gray-400">Name</FormLabel>
+                <FormLabel className="text-sm text-gray-400">Nimi</FormLabel>
                 <FormControl>
                   <Input 
-                    placeholder="Your name" 
+                    placeholder="Sinu nimi" 
                     {...field} 
                     className="bg-white/5 border-white/10 text-white rounded-xl focus:ring-white/20 h-12 placeholder:text-gray-500"
                     data-testid="input-name"
@@ -55,10 +55,10 @@ export function ContactForm() {
             name="email"
             render={({ field }) => (
               <FormItem>
-                <FormLabel className="text-sm text-gray-400">Email</FormLabel>
+                <FormLabel className="text-sm text-gray-400">E-post</FormLabel>
                 <FormControl>
                   <Input 
-                    placeholder="you@example.com" 
+                    placeholder="sina@näide.ee" 
                     {...field} 
                     className="bg-white/5 border-white/10 text-white rounded-xl focus:ring-white/20 h-12 placeholder:text-gray-500"
                     data-testid="input-email"
@@ -74,10 +74,10 @@ export function ContactForm() {
           name="message"
           render={({ field }) => (
             <FormItem>
-              <FormLabel className="text-sm text-gray-400">Message</FormLabel>
+              <FormLabel className="text-sm text-gray-400">Sõnum</FormLabel>
               <FormControl>
                 <Textarea 
-                  placeholder="Tell us about your fitness goals..." 
+                  placeholder="Räägi meile oma treeningueesmärkidest..." 
                   {...field} 
                   className="bg-white/5 border-white/10 text-white rounded-xl focus:ring-white/20 min-h-[140px] resize-none placeholder:text-gray-500"
                   data-testid="input-message"
@@ -95,11 +95,11 @@ export function ContactForm() {
         >
           {mutation.isPending ? (
             <>
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Sending...
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Saadan...
             </>
           ) : (
             <>
-              Send Message
+              Saada sõnum
               <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
             </>
           )}

@@ -22,7 +22,7 @@ export function ServiceCard({ title, price, description, features, popular }: Se
       {popular && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2">
           <span className="bg-black text-white text-xs font-medium px-4 py-1.5 rounded-full">
-            Most Popular
+            Populaarseim
           </span>
         </div>
       )}
@@ -61,7 +61,7 @@ export function ServiceCard({ title, price, description, features, popular }: Se
         }}
         data-testid={`button-choose-${title.toLowerCase()}`}
       >
-        Choose {title}
+        Vali {title}
       </Button>
     </div>
   );

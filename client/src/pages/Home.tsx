@@ -48,16 +48,16 @@ export default function Home() {
             <motion.div variants={fadeInUp} className="mb-6">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400">
                 <Sparkles className="w-4 h-4" />
-                Transform your body and mind
+                Muuda oma keha ja meel
               </span>
             </motion.div>
             
             <motion.h1 variants={fadeInUp} className="text-4xl md:text-6xl lg:text-7xl font-semibold text-white leading-[1.1] tracking-tight mb-6">
-              The most effective personal training platform
+              Kõige tõhusam personaaltreeningu platvorm
             </motion.h1>
             
             <motion.p variants={fadeInUp} className="max-w-2xl text-gray-400 text-lg md:text-xl leading-relaxed mb-10">
-              Expert coaching and customized programs powering hundreds of transformations. From beginners to athletes, achieve your fitness goals with personalized guidance.
+              Professionaalne juhendamine ja kohandatud programmid, mis on aidanud sadu inimesi muutuda. Algajatest sportlasteni — saavuta oma treeningueesmärgid personaalse juhendamisega.
             </motion.p>
             
             <motion.div variants={fadeInUp} className="flex flex-wrap items-center justify-center gap-4">
@@ -66,7 +66,7 @@ export default function Home() {
                 className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-6 font-medium text-base"
                 data-testid="button-hero-start"
               >
-                Get Started
+                Alusta kohe
               </Button>
               <Button 
                 variant="ghost"
@@ -74,7 +74,7 @@ export default function Home() {
                 className="text-gray-300 hover:text-white hover:bg-white/5 rounded-full px-8 py-6 font-medium text-base group"
                 data-testid="button-hero-learn"
               >
-                View Programs
+                Vaata programme
                 <ChevronRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
               </Button>
             </motion.div>
@@ -89,16 +89,16 @@ export default function Home() {
             {[...Array(2)].map((_, setIndex) => (
               <div key={setIndex} className="flex shrink-0 gap-4 px-2">
                 {[
-                  "Personal Training",
-                  "Nutrition Plans", 
-                  "Online Coaching",
-                  "Group Sessions",
-                  "Body Analysis",
-                  "Progress Tracking",
-                  "Strength Building",
-                  "Weight Loss",
-                  "Flexibility Training",
-                  "HIIT Workouts"
+                  "Personaaltreening",
+                  "Toitumiskavad", 
+                  "Online juhendamine",
+                  "Rühmatreeningud",
+                  "Keha analüüs",
+                  "Edusammude jälgimine",
+                  "Jõutreening",
+                  "Kaalulangetus",
+                  "Venitusharjutused",
+                  "HIIT treeningud"
                 ].map((feature, i) => (
                   <span 
                     key={`${setIndex}-${i}`} 
@@ -118,10 +118,10 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
             {[
-              { value: "500+", label: "Happy Clients" },
-              { value: "10+", label: "Years Experience" },
-              { value: "5,000+", label: "Sessions Completed" },
-              { value: "98%", label: "Success Rate" },
+              { value: "500+", label: "Rahulolevat klienti" },
+              { value: "10+", label: "Aastat kogemust" },
+              { value: "5000+", label: "Läbitud treeningut" },
+              { value: "98%", label: "Edukuse määr" },
             ].map((stat, i) => (
               <motion.div 
                 key={i}
@@ -158,7 +158,7 @@ export default function Home() {
               </div>
               <div className="absolute -bottom-6 -right-6 bg-white text-black rounded-2xl p-6 shadow-2xl">
                 <div className="text-3xl font-semibold">10+</div>
-                <div className="text-sm text-gray-600">Years of experience</div>
+                <div className="text-sm text-gray-600">Aastat kogemust</div>
               </div>
             </motion.div>
             
@@ -168,27 +168,27 @@ export default function Home() {
               viewport={{ once: true }}
             >
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400 mb-6">
-                About me
+                Minust
               </span>
               
               <h2 className="text-3xl md:text-5xl font-semibold text-white mb-6 leading-tight">
-                More than just workouts. A complete transformation.
+                Rohkem kui lihtsalt treening. Täielik muutumine.
               </h2>
               
               <div className="space-y-5 text-gray-400 text-lg leading-relaxed">
                 <p>
-                  I believe that true strength is built in the mind first. The body simply follows. My philosophy isn't about quick fixes—it's about building a sustainable lifestyle that empowers you.
+                  Usun, et tõeline jõud sünnib esmalt mõistuses. Keha järgneb lihtsalt. Minu filosoofia ei keskendu kiirlahendustele — see on jätkusuutliku elustiili loomine, mis annab sulle jõudu.
                 </p>
                 <p>
-                  With over 10 years of experience in strength and conditioning, I've helped hundreds of clients transform not just their physique, but their confidence and discipline.
+                  Üle 10 aasta kogemusega jõu- ja vormiharjutustes olen aidanud sadu kliente muuta mitte ainult oma keha, vaid ka enesekindlust ja distsipliini.
                 </p>
               </div>
 
               <div className="mt-10 grid grid-cols-3 gap-6">
                 {[
-                  { icon: Target, label: "Goal Focused" },
-                  { icon: Zap, label: "High Energy" },
-                  { icon: Users, label: "Community" },
+                  { icon: Target, label: "Eesmärgipõhine" },
+                  { icon: Zap, label: "Kõrge energia" },
+                  { icon: Users, label: "Kogukond" },
                 ].map((item, i) => (
                   <div key={i} className="flex flex-col items-center gap-3 text-center">
                     <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center">
@@ -208,52 +208,52 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400 mb-6">
-              Pricing
+              Hinnad
             </span>
             <h2 className="text-3xl md:text-5xl font-semibold text-white mb-4">
-              Choose your training program
+              Vali oma treeningprogramm
             </h2>
             <p className="text-gray-400 text-lg">
-              Select the plan that fits your goals and lifestyle. All plans include personalized attention.
+              Vali pakett, mis sobib sinu eesmärkide ja elustiiliga. Kõik paketid sisaldavad personaalset tähelepanu.
             </p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             <ServiceCard 
               title="Online" 
-              price="$150" 
-              description="Perfect for self-motivated individuals"
+              price="€120" 
+              description="Ideaalne enesemotiveeritud inimestele"
               features={[
-                "Customized Workout Plan",
-                "Weekly Check-ins",
-                "Nutritional Guidance",
-                "Form Analysis via Video",
-                "24/7 In-app Support"
+                "Kohandatud treeningkava",
+                "Iganädalased konsultatsioonid",
+                "Toitumisnõustamine",
+                "Tehnika analüüs video põhjal",
+                "24/7 tugi rakenduses"
               ]}
             />
             <ServiceCard 
-              title="Hybrid" 
-              price="$350" 
-              description="The best of both worlds"
+              title="Hübriid" 
+              price="€280" 
+              description="Parim mõlemast maailmast"
               popular={true}
               features={[
-                "Everything in Online",
-                "2 In-Person Sessions/Month",
-                "Body Composition Analysis",
-                "Custom Meal Plans",
-                "Priority Support"
+                "Kõik Online paketist",
+                "2 kohapealset treeningut kuus",
+                "Kehakoostise analüüs",
+                "Kohandatud menüüd",
+                "Prioriteetne tugi"
               ]}
             />
             <ServiceCard 
-              title="Elite" 
-              price="$800" 
-              description="Full immersion coaching"
+              title="Eliit" 
+              price="€650" 
+              description="Täielik süvitsi juhendamine"
               features={[
-                "3 Sessions Per Week",
-                "Daily Accountability",
-                "Grocery Shopping Guide",
-                "Supplement Protocols",
-                "Physiotherapy Access"
+                "3 treeningut nädalas",
+                "Igapäevane vastutus",
+                "Toidukorvi juhend",
+                "Toidulisandite protokollid",
+                "Füsioteraapia konsultatsioon"
               ]}
             />
           </div>
@@ -265,29 +265,29 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="text-center max-w-2xl mx-auto mb-16">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400 mb-6">
-              Testimonials
+              Tagasiside
             </span>
             <h2 className="text-3xl md:text-5xl font-semibold text-white mb-4">
-              What clients are saying
+              Mida kliendid ütlevad
             </h2>
           </div>
           
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {[
               {
-                quote: "I never thought I could achieve these results in just 3 months. The discipline I learned here changed my life.",
-                author: "Sarah Johnson",
-                role: "Entrepreneur"
+                quote: "Ma ei uskunud, et suudan sellised tulemused saavutada vaid 3 kuuga. Distsipliin, mida siin õppisin, muutis mu elu.",
+                author: "Kadri Tamm",
+                role: "Ettevõtja"
               },
               {
-                quote: "The attention to detail on form and technique is unmatched. No injuries, just pure progress.",
-                author: "Michael Torres",
-                role: "Software Engineer"
+                quote: "Tähelepanu detailidele vormi ja tehnika osas on võrratu. Mingeid vigastusi, ainult puhas progress.",
+                author: "Marten Kask",
+                role: "Tarkvaraarendaja"
               },
               {
-                quote: "It's challenging, it's rewarding, and it's absolutely worth every session. Best investment in myself.",
-                author: "David Reynolds",
-                role: "Architect"
+                quote: "See on väljakutsuv, see on tasustav ja see on absoluutselt iga treeningu väärt. Parim investeering endasse.",
+                author: "Tõnis Rebane",
+                role: "Arhitekt"
               }
             ].map((story, i) => (
               <motion.div 
@@ -319,13 +319,13 @@ export default function Home() {
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
               <div>
                 <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400 mb-6">
-                  Get in touch
+                  Võta ühendust
                 </span>
                 <h2 className="text-3xl md:text-5xl font-semibold text-white mb-6 leading-tight">
-                  Ready to start your transformation?
+                  Valmis alustama oma muutumist?
                 </h2>
                 <p className="text-lg text-gray-400 mb-10 leading-relaxed">
-                  Fill out the form and I'll get back to you within 24 hours. Let's build your roadmap to success together.
+                  Täida vorm ja vastan sulle 24 tunni jooksul. Loome koos sinu teekonna eduni.
                 </p>
                 
                 <div className="space-y-6">
@@ -334,8 +334,8 @@ export default function Home() {
                       <ArrowRight className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-medium text-white mb-1">Location</h3>
-                      <p className="text-gray-500">123 Fitness Street, New York, NY 10012</p>
+                      <h3 className="font-medium text-white mb-1">Asukoht</h3>
+                      <p className="text-gray-500">Viru väljak 4, 10111 Tallinn, Eesti</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
@@ -343,8 +343,8 @@ export default function Home() {
                       <ArrowRight className="w-4 h-4 text-white" />
                     </div>
                     <div>
-                      <h3 className="font-medium text-white mb-1">Contact</h3>
-                      <p className="text-gray-500">hello@fitpro.com</p>
+                      <h3 className="font-medium text-white mb-1">Kontakt</h3>
+                      <p className="text-gray-500">tere@fitpro.ee</p>
                     </div>
                   </div>
                 </div>
@@ -366,7 +366,7 @@ export default function Home() {
               FitPro
             </div>
             <div className="text-sm text-gray-500">
-              © {new Date().getFullYear()} FitPro Training. All rights reserved.
+              © {new Date().getFullYear()} FitPro Treening. Kõik õigused kaitstud.
             </div>
             <div className="flex gap-6">
               {['Instagram', 'Twitter', 'YouTube'].map(social => (
