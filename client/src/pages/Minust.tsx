@@ -125,67 +125,115 @@ export default function Minust() {
       {activeTab === 'about' && (
         <section className="py-16 md:py-24">
           <div className="container mx-auto px-6">
-            <div className="grid lg:grid-cols-2 gap-16 items-center max-w-6xl mx-auto">
+            <div className="max-w-4xl mx-auto">
+              {/* Intro Section */}
               <motion.div 
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-                className="relative"
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="grid lg:grid-cols-2 gap-12 items-center mb-20"
               >
-                <div className="aspect-[4/5] rounded-3xl overflow-hidden bg-white/5">
-                  <img 
-                    src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=2070&auto=format&fit=crop" 
-                    alt="Personal Trainer" 
-                    className="w-full h-full object-cover"
-                  />
+                <div className="relative">
+                  <div className="aspect-[4/5] rounded-3xl overflow-hidden bg-white/5">
+                    <img 
+                      src="https://images.unsplash.com/photo-1583454110551-21f2fa2afe61?q=80&w=2070&auto=format&fit=crop" 
+                      alt="Personal Trainer" 
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 </div>
-                <div className="absolute -bottom-6 -right-6 bg-white text-black rounded-2xl p-6 shadow-2xl">
-                  <div className="text-3xl font-semibold">10+</div>
-                  <div className="text-sm text-gray-600">Aastat kogemust</div>
+                
+                <div>
+                  <h2 className="text-2xl md:text-3xl font-semibold text-white mb-6 leading-tight">
+                    Minu taust
+                  </h2>
+                  <div className="space-y-4 text-gray-400 leading-relaxed">
+                    <p>
+                      Sport ja liikuv eluviis on mulle südamelähedane valdkond. Sellest tulenevalt läksin omandama teadmisi ülikooli, et saada baasteadmised sportlaste ja tava-harrastajate treenimisel.
+                    </p>
+                    <p>
+                      Selle aja jooksul sain selgeks, et just selles valdkonnas tahan ennast realiseerida ja treenida nii noor kui ka täiskasvanud sportlaste kehalist võimekust vastavalt nende valitud spordialale.
+                    </p>
+                    <p>
+                      Mul on olemas kogemus ÜKE treenerina pallimängualade (jalgpall, korvpall), reketialade (tennis, sulgpall) kui ka üksik-sportlaste treenimisel (kergejõustik, maadlus, ratsutajad).
+                    </p>
+                  </div>
                 </div>
               </motion.div>
-              
+
+              {/* What I Do */}
               <motion.div 
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 }}
+                className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 md:p-10 mb-12"
               >
-                <h2 className="text-3xl md:text-4xl font-semibold text-white mb-6 leading-tight">
-                  Rohkem kui lihtsalt treening. Täielik muutumine.
+                <h2 className="text-2xl font-semibold text-white mb-6">
+                  Mida ma teen?
                 </h2>
-                
-                <div className="space-y-5 text-gray-400 text-lg leading-relaxed">
+                <div className="space-y-4 text-gray-400 leading-relaxed">
                   <p>
-                    Usun, et tõeline jõud sünnib esmalt mõistuses. Keha järgneb lihtsalt. Minu filosoofia ei keskendu kiirlahendustele — see on jätkusuutliku elustiili loomine, mis annab sulle jõudu.
+                    Viin läbi <span className="text-white font-medium">ÜKE treeninguid</span> ehk üldkehalise ettevalmistuse treeninguid. ÜKE treeningute läbiviimisel ja planeerimisel pean oluliseks kogu keha läbitöötamist.
                   </p>
                   <p>
-                    Üle 10 aasta kogemusega jõu- ja vormiharjutustes olen aidanud sadu kliente muuta mitte ainult oma keha, vaid ka enesekindlust ja distsipliini.
+                    Erineva tasemega sportlaste ja harrastajatega tegelemisel lähtun nende kehalisest hetkeseisust, spordialast ja soovitud eesmärkidest, et välja töötada individuaalne tegevuskava.
+                  </p>
+                  <p>
+                    Treenerina ma tahan, et iga sportlane saaks kasutada enda täit potentsiaali füüsiliste võimete arendamisel. <span className="text-white font-medium">Iga inimene on erinev ja vajab individuaalset lähenemist.</span>
+                  </p>
+                </div>
+              </motion.div>
+
+              {/* Philosophy */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.2 }}
+                className="mb-12"
+              >
+                <h2 className="text-2xl font-semibold text-white mb-6">
+                  Minu treeningfilosoofia
+                </h2>
+                <div className="space-y-4 text-gray-400 leading-relaxed">
+                  <p>
+                    Minu treeningute filosoofia on see, et <span className="text-white font-medium">treening peab olema nauditav ja arendav</span>. Läbi selle tekib elustiili muutus, mis tagab järjepidevuse ja jõudmise soovitud tulemusteni.
+                  </p>
+                  <p>
+                    Kõige olulisemaks pean treeneritöö juures seda, et saan aidata inimestel jõuda sinna, kus treeningutest saab nende igapäeva osa.
                   </p>
                 </div>
 
-                <div className="mt-10 grid grid-cols-3 gap-6">
+                <div className="mt-10 grid grid-cols-2 md:grid-cols-4 gap-4">
                   {[
-                    { icon: Target, label: "Eesmärgipõhine" },
-                    { icon: Zap, label: "Kõrge energia" },
-                    { icon: Users, label: "Kogukond" },
+                    { icon: Target, label: "Individuaalne" },
+                    { icon: Target, label: "Eesmärgipärane" },
+                    { icon: Zap, label: "Jätkusuutlik" },
+                    { icon: Users, label: "Arenev" },
                   ].map((item, i) => (
-                    <div key={i} className="flex flex-col items-center gap-3 text-center">
-                      <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center">
-                        <item.icon className="w-5 h-5 text-white" />
+                    <div key={i} className="flex flex-col items-center gap-3 text-center p-4 rounded-2xl bg-white/[0.03] border border-white/10">
+                      <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center">
+                        <item.icon className="w-4 h-4 text-white" />
                       </div>
-                      <span className="text-sm text-gray-400">{item.label}</span>
+                      <span className="text-sm text-gray-300">{item.label}</span>
                     </div>
                   ))}
                 </div>
+              </motion.div>
 
-                <div className="mt-10">
-                  <Link href="/kontakt">
-                    <Button 
-                      className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-6 font-medium"
-                      data-testid="button-about-contact"
-                    >
-                      Võta ühendust
-                    </Button>
-                  </Link>
-                </div>
+              {/* CTA */}
+              <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.3 }}
+                className="text-center"
+              >
+                <Link href="/kontakt">
+                  <Button 
+                    className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-6 font-medium"
+                    data-testid="button-about-contact"
+                  >
+                    Võta ühendust
+                  </Button>
+                </Link>
               </motion.div>
             </div>
           </div>
