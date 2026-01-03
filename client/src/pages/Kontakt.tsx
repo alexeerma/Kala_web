@@ -1,7 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { ContactForm } from "@/components/ContactForm";
 import { motion } from "framer-motion";
-import { ArrowRight, MapPin, Mail, Phone } from "lucide-react";
+import { MapPin, Mail, Phone, Building2, CreditCard } from "lucide-react";
 import { Link } from "wouter";
 
 const fadeInUp = {
@@ -46,43 +46,79 @@ export default function Kontakt() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 0.2 }}
               >
-                <h2 className="text-2xl md:text-3xl font-semibold text-white mb-8">
-                  Kontaktandmed
-                </h2>
-                
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center shrink-0">
-                      <MapPin className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="font-medium text-white mb-1">Asukoht</h3>
-                      <p className="text-gray-400">Viru väljak 4, 10111 Tallinn, Eesti</p>
+                <div className="grid sm:grid-cols-2 gap-8">
+                  {/* Contact Info */}
+                  <div>
+                    <h2 className="text-xl font-semibold text-white mb-6">
+                      Kontaktandmed
+                    </h2>
+                    
+                    <div className="space-y-5">
+                      <div className="flex items-start gap-3">
+                        <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0">
+                          <MapPin className="w-4 h-4 text-white" />
+                        </div>
+                        <div>
+                          <h3 className="font-medium text-white text-sm mb-0.5">Asukoht</h3>
+                          <p className="text-gray-400 text-sm">Tartu + Tallinn</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-start gap-3">
+                        <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0">
+                          <Mail className="w-4 h-4 text-white" />
+                        </div>
+                        <div>
+                          <h3 className="font-medium text-white text-sm mb-0.5">E-post</h3>
+                          <p className="text-gray-400 text-sm">info@rasmuskala.ee</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-start gap-3">
+                        <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0">
+                          <Phone className="w-4 h-4 text-white" />
+                        </div>
+                        <div>
+                          <h3 className="font-medium text-white text-sm mb-0.5">Telefon</h3>
+                          <p className="text-gray-400 text-sm">+372 5129 123</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
-                  
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center shrink-0">
-                      <Mail className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="font-medium text-white mb-1">E-post</h3>
-                      <p className="text-gray-400">tere@fitpro.ee</p>
-                    </div>
-                  </div>
-                  
-                  <div className="flex items-start gap-4">
-                    <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center shrink-0">
-                      <Phone className="w-5 h-5 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="font-medium text-white mb-1">Telefon</h3>
-                      <p className="text-gray-400">+372 5XX XXXX</p>
+
+                  {/* Business Info */}
+                  <div>
+                    <h2 className="text-xl font-semibold text-white mb-6">
+                      Ettevõtte andmed
+                    </h2>
+                    
+                    <div className="space-y-5">
+                      <div className="flex items-start gap-3">
+                        <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0">
+                          <Building2 className="w-4 h-4 text-white" />
+                        </div>
+                        <div>
+                          <h3 className="font-medium text-white text-sm mb-0.5">Rasmus Kala</h3>
+                          <p className="text-gray-400 text-sm">OÜ RK PERFORMANCE</p>
+                          <p className="text-gray-500 text-xs mt-1">Registrikood: 17362262</p>
+                        </div>
+                      </div>
+                      
+                      <div className="flex items-start gap-3">
+                        <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0">
+                          <CreditCard className="w-4 h-4 text-white" />
+                        </div>
+                        <div>
+                          <h3 className="font-medium text-white text-sm mb-0.5">LHV Pank</h3>
+                          <p className="text-gray-400 text-sm break-all">EE607700771012317599</p>
+                          <p className="text-gray-500 text-xs mt-1">Ei ole käibemaksukohuslane</p>
+                        </div>
+                      </div>
                     </div>
                   </div>
                 </div>
 
-                <div className="mt-12 p-6 rounded-2xl bg-white/[0.03] border border-white/10">
+                <div className="mt-10 p-6 rounded-2xl bg-white/[0.03] border border-white/10">
                   <h3 className="font-medium text-white mb-3">Treeningute asukohad</h3>
                   <p className="text-sm text-gray-400 leading-relaxed">
                     Eratreeningud toimuvad Tartu Ülikooli Akadeemilises Spordiklubis, Tartu MyFitness klubides või vastavalt kokkuleppele Sinu valitud jõusaalis Tartus ja Tallinnas.
