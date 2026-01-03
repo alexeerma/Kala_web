@@ -10,6 +10,9 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { ArrowRight, Loader2, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 
+// Formspree vorm - loo tasuta konto formspree.io ja asenda see oma vormi ID-ga
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/YOUR_FORM_ID";
+
 const packages = [
   { value: "1x-personaaltreening", label: "1x Personaaltreening - 50€" },
   { value: "personaaltreening-sobraga", label: "Personaaltreening sõbraga - 75€" },
@@ -48,12 +51,18 @@ export function ContactForm() {
     setIsSubmitting(true);
     try {
       const packageLabel = packages.find(p => p.value === data.selectedPackage)?.label || "Pole valitud";
-      const response = await fetch("/api/contact", {
+      
+      const response = await fetch(FORMSPREE_ENDPOINT, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+          "Accept": "application/json"
+        },
         body: JSON.stringify({
-          ...data,
-          selectedPackage: packageLabel,
+          name: data.name,
+          email: data.email,
+          pakett: packageLabel,
+          message: data.message,
         }),
       });
       
