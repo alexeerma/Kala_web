@@ -1,12 +1,14 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Loader2, CheckCircle } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 const packages = [
   { value: "1x-personaaltreening", label: "1x Personaaltreening - 50€" },
@@ -28,6 +30,10 @@ const contactFormSchema = z.object({
 type ContactFormData = z.infer<typeof contactFormSchema>;
 
 export function ContactForm() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [isSuccess, setIsSuccess] = useState(false);
+  const { toast } = useToast();
+  
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
@@ -38,14 +44,38 @@ export function ContactForm() {
     },
   });
 
-  const onSubmit = (data: ContactFormData) => {
-    const packageLabel = packages.find(p => p.value === data.selectedPackage)?.label || "Pole valitud";
-    const subject = encodeURIComponent(`Kontaktvorm: ${data.name}`);
-    const body = encodeURIComponent(
-      `Nimi: ${data.name}\nE-post: ${data.email}\nPakett: ${packageLabel}\n\nSõnum:\n${data.message}`
-    );
-    window.location.href = `mailto:info@rasmuskala.ee?subject=${subject}&body=${body}`;
-    form.reset();
+  const onSubmit = async (data: ContactFormData) => {
+    setIsSubmitting(true);
+    try {
+      const packageLabel = packages.find(p => p.value === data.selectedPackage)?.label || "Pole valitud";
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...data,
+          selectedPackage: packageLabel,
+        }),
+      });
+      
+      if (!response.ok) {
+        throw new Error("Saatmine ebaõnnestus");
+      }
+      
+      setIsSuccess(true);
+      form.reset();
+      toast({
+        title: "Sõnum saadetud!",
+        description: "Võtan Sinuga ühendust 24 tunni jooksul.",
+      });
+    } catch (error) {
+      toast({
+        title: "Viga",
+        description: "Sõnumi saatmine ebaõnnestus. Palun proovi uuesti.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -140,11 +170,24 @@ export function ContactForm() {
         />
         <Button 
           type="submit" 
+          disabled={isSubmitting || isSuccess}
           className="bg-white text-black hover:bg-gray-100 rounded-full font-medium px-8 py-6 text-sm transition-all group"
           data-testid="button-submit"
         >
-          Saada sõnum
-          <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+          {isSubmitting ? (
+            <>
+              <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Saadan...
+            </>
+          ) : isSuccess ? (
+            <>
+              <CheckCircle className="mr-2 h-4 w-4" /> Saadetud!
+            </>
+          ) : (
+            <>
+              Saada sõnum
+              <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+            </>
+          )}
         </Button>
       </form>
     </Form>
