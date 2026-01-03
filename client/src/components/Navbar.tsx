@@ -2,17 +2,19 @@ import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
+import { Link, useLocation } from "wouter";
 
 const NAV_LINKS = [
-  { name: "Minust", href: "#about" },
-  { name: "Teenused", href: "#services" },
-  { name: "Tagasiside", href: "#testimonials" },
-  { name: "Kontakt", href: "#contact" },
+  { name: "Minust", href: "#about", isAnchor: true },
+  { name: "Hinnakiri", href: "/hinnakiri", isAnchor: false },
+  { name: "Tagasiside", href: "#testimonials", isAnchor: true },
+  { name: "Kontakt", href: "#contact", isAnchor: true },
 ];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [location] = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,13 +24,35 @@ export function Navbar() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault();
+  const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
       setIsMobileMenuOpen(false);
     }
+  };
+
+  const handleNavClick = (e: React.MouseEvent, link: typeof NAV_LINKS[0]) => {
+    if (link.isAnchor) {
+      e.preventDefault();
+      if (location !== "/") {
+        window.location.href = "/" + link.href;
+      } else {
+        scrollToSection(link.href);
+      }
+      setIsMobileMenuOpen(false);
+    } else {
+      setIsMobileMenuOpen(false);
+    }
+  };
+
+  const handleContactClick = () => {
+    if (location !== "/") {
+      window.location.href = "/#contact";
+    } else {
+      scrollToSection("#contact");
+    }
+    setIsMobileMenuOpen(false);
   };
 
   return (
@@ -39,35 +63,44 @@ export function Navbar() {
       )}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        <a 
-          href="#" 
-          onClick={(e) => scrollToSection(e, "#hero")} 
-          className="text-xl font-semibold text-white tracking-tight"
-          data-testid="link-logo"
-        >
-          FitPro
-        </a>
+        <Link href="/">
+          <span 
+            className="text-xl font-semibold text-white tracking-tight cursor-pointer"
+            data-testid="link-logo"
+          >
+            FitPro
+          </span>
+        </Link>
 
         <div className="hidden md:flex items-center gap-1">
           {NAV_LINKS.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={(e) => scrollToSection(e, link.href)}
-              className="px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-full"
-              data-testid={`link-nav-${link.name.toLowerCase()}`}
-            >
-              {link.name}
-            </a>
+            link.isAnchor ? (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={(e) => handleNavClick(e, link)}
+                className="px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-full"
+                data-testid={`link-nav-${link.name.toLowerCase()}`}
+              >
+                {link.name}
+              </a>
+            ) : (
+              <Link key={link.name} href={link.href}>
+                <span
+                  className="px-4 py-2 text-sm text-gray-400 hover:text-white transition-colors rounded-full cursor-pointer"
+                  data-testid={`link-nav-${link.name.toLowerCase()}`}
+                >
+                  {link.name}
+                </span>
+              </Link>
+            )
           ))}
         </div>
 
         <div className="hidden md:flex items-center gap-3">
           <Button 
             className="bg-white text-black hover:bg-gray-100 rounded-full px-5 font-medium"
-            onClick={(e) => {
-              scrollToSection(e as unknown as React.MouseEvent<HTMLAnchorElement>, "#contact");
-            }}
+            onClick={handleContactClick}
             data-testid="button-signup"
           >
             Alusta kohe
@@ -86,22 +119,32 @@ export function Navbar() {
       {isMobileMenuOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-black/95 backdrop-blur-xl border-b border-white/5 p-6 flex flex-col gap-2">
           {NAV_LINKS.map((link) => (
-            <a
-              key={link.name}
-              href={link.href}
-              onClick={(e) => scrollToSection(e, link.href)}
-              className="text-base text-gray-300 hover:text-white py-3 border-b border-white/5 transition-colors"
-              data-testid={`link-mobile-${link.name.toLowerCase()}`}
-            >
-              {link.name}
-            </a>
+            link.isAnchor ? (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={(e) => handleNavClick(e, link)}
+                className="text-base text-gray-300 hover:text-white py-3 border-b border-white/5 transition-colors"
+                data-testid={`link-mobile-${link.name.toLowerCase()}`}
+              >
+                {link.name}
+              </a>
+            ) : (
+              <Link key={link.name} href={link.href}>
+                <span
+                  className="block text-base text-gray-300 hover:text-white py-3 border-b border-white/5 transition-colors cursor-pointer"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  data-testid={`link-mobile-${link.name.toLowerCase()}`}
+                >
+                  {link.name}
+                </span>
+              </Link>
+            )
           ))}
           <div className="flex flex-col gap-3 mt-4">
             <Button 
               className="w-full bg-white text-black hover:bg-gray-100 rounded-full font-medium"
-              onClick={(e) => {
-                scrollToSection(e as unknown as React.MouseEvent<HTMLAnchorElement>, "#contact");
-              }}
+              onClick={handleContactClick}
               data-testid="button-mobile-signup"
             >
               Alusta kohe

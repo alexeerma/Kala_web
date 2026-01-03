@@ -1,9 +1,9 @@
 import { Navbar } from "@/components/Navbar";
 import { ContactForm } from "@/components/ContactForm";
-import { ServiceCard } from "@/components/ServiceCard";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Target, Zap, Users, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Link } from "wouter";
 
 const fadeInUp = {
   hidden: { opacity: 0, y: 30 },
@@ -206,56 +206,25 @@ export default function Home() {
       {/* Services Section */}
       <section id="services" className="py-20 md:py-28">
         <div className="container mx-auto px-6">
-          <div className="text-center max-w-2xl mx-auto mb-16">
+          <div className="text-center max-w-2xl mx-auto">
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400 mb-6">
-              Hinnad
+              Teenused
             </span>
             <h2 className="text-3xl md:text-5xl font-semibold text-white mb-4">
-              Vali oma treeningprogramm
+              Personaalsed treeningpaketid
             </h2>
-            <p className="text-gray-400 text-lg">
-              Vali pakett, mis sobib sinu eesmärkide ja elustiiliga. Kõik paketid sisaldavad personaalset tähelepanu.
+            <p className="text-gray-400 text-lg mb-10">
+              Alates üksikutest treeningutest kuni pikaajalise online juhendamiseni — leia endale sobiv lahendus.
             </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            <ServiceCard 
-              title="Online" 
-              price="€120" 
-              description="Ideaalne enesemotiveeritud inimestele"
-              features={[
-                "Kohandatud treeningkava",
-                "Iganädalased konsultatsioonid",
-                "Toitumisnõustamine",
-                "Tehnika analüüs video põhjal",
-                "24/7 tugi rakenduses"
-              ]}
-            />
-            <ServiceCard 
-              title="Hübriid" 
-              price="€280" 
-              description="Parim mõlemast maailmast"
-              popular={true}
-              features={[
-                "Kõik Online paketist",
-                "2 kohapealset treeningut kuus",
-                "Kehakoostise analüüs",
-                "Kohandatud menüüd",
-                "Prioriteetne tugi"
-              ]}
-            />
-            <ServiceCard 
-              title="Eliit" 
-              price="€650" 
-              description="Täielik süvitsi juhendamine"
-              features={[
-                "3 treeningut nädalas",
-                "Igapäevane vastutus",
-                "Toidukorvi juhend",
-                "Toidulisandite protokollid",
-                "Füsioteraapia konsultatsioon"
-              ]}
-            />
+            <Link href="/hinnakiri">
+              <Button 
+                className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-6 font-medium text-base group"
+                data-testid="button-view-pricing"
+              >
+                Vaata hinnakirja
+                <ChevronRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
