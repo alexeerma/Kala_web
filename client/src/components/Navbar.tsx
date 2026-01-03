@@ -8,7 +8,7 @@ const NAV_LINKS = [
   { name: "Minust", href: "#about", isAnchor: true },
   { name: "Hinnakiri", href: "/hinnakiri", isAnchor: false },
   { name: "Tagasiside", href: "#testimonials", isAnchor: true },
-  { name: "Kontakt", href: "#contact", isAnchor: true },
+  { name: "Kontakt", href: "/kontakt", isAnchor: false },
 ];
 
 export function Navbar() {
@@ -47,11 +47,7 @@ export function Navbar() {
   };
 
   const handleContactClick = () => {
-    if (location !== "/") {
-      window.location.href = "/#contact";
-    } else {
-      scrollToSection("#contact");
-    }
+    window.location.href = "/kontakt";
     setIsMobileMenuOpen(false);
   };
 

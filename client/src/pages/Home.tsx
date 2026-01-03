@@ -1,5 +1,4 @@
 import { Navbar } from "@/components/Navbar";
-import { ContactForm } from "@/components/ContactForm";
 import { motion } from "framer-motion";
 import { ArrowRight, Sparkles, Target, Zap, Users, ChevronRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -281,48 +280,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Contact Section */}
-      <section id="contact" className="py-20 md:py-28">
+      {/* CTA Section */}
+      <section className="py-20 md:py-28">
         <div className="container mx-auto px-6">
-          <div className="max-w-5xl mx-auto">
-            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20">
-              <div>
-                <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400 mb-6">
-                  Võta ühendust
-                </span>
-                <h2 className="text-3xl md:text-5xl font-semibold text-white mb-6 leading-tight">
-                  Valmis alustama oma muutumist?
-                </h2>
-                <p className="text-lg text-gray-400 mb-10 leading-relaxed">
-                  Täida vorm ja vastan sulle 24 tunni jooksul. Loome koos sinu teekonna eduni.
-                </p>
-                
-                <div className="space-y-6">
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0">
-                      <ArrowRight className="w-4 h-4 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="font-medium text-white mb-1">Asukoht</h3>
-                      <p className="text-gray-500">Viru väljak 4, 10111 Tallinn, Eesti</p>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-4">
-                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0">
-                      <ArrowRight className="w-4 h-4 text-white" />
-                    </div>
-                    <div>
-                      <h3 className="font-medium text-white mb-1">Kontakt</h3>
-                      <p className="text-gray-500">tere@fitpro.ee</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="bg-white/[0.03] border border-white/10 rounded-2xl p-8 lg:p-10">
-                <ContactForm />
-              </div>
-            </div>
+          <div className="max-w-3xl mx-auto text-center">
+            <h2 className="text-3xl md:text-5xl font-semibold text-white mb-6 leading-tight">
+              Valmis alustama oma muutumist?
+            </h2>
+            <p className="text-lg text-gray-400 mb-10 leading-relaxed">
+              Võta minuga ühendust ja leiame koos Sulle sobiva lahenduse. Vastan 24 tunni jooksul.
+            </p>
+            <Link href="/kontakt">
+              <Button 
+                className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-6 font-medium text-base group"
+                data-testid="button-cta-contact"
+              >
+                Võta ühendust
+                <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+              </Button>
+            </Link>
           </div>
         </div>
       </section>

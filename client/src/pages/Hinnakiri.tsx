@@ -60,7 +60,7 @@ function PriceCard({ title, price, description, features, popular }: PriceCardPr
         ))}
       </ul>
 
-      <Link href="/#contact">
+      <Link href="/kontakt">
         <Button 
           className={`w-full rounded-full font-medium py-6 ${
             popular 
@@ -209,7 +209,7 @@ export default function Hinnakiri() {
           <p className="text-gray-400 text-lg mb-8 max-w-xl mx-auto">
             Võta minuga ühendust ja leiame koos Sulle sobiva lahenduse.
           </p>
-          <Link href="/#contact">
+          <Link href="/kontakt">
             <Button 
               className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-6 font-medium text-base group"
               data-testid="button-cta-contact"
