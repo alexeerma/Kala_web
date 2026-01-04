@@ -3,7 +3,6 @@ import { TestimonialSlider } from "@/components/TestimonialSlider";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
-  Sparkles,
   Target,
   Zap,
   Users,
@@ -23,44 +22,74 @@ import kalaminust from "@assets/Kala.jpg";
 
 const faqs = [
   {
-    question: "Kas personaaltreening sobib algajatele?",
+    question: "Mis on jõu- ja üldkehaline treening?",
     answer:
-      "Jah, personaaltreening sobib suurepäraselt algajatele! Kohandan kõik harjutused vastavalt Sinu tasemele ja õpetan õiget tehnikat algusest peale. See on tegelikult parim viis alustada, kuna väldid vigade tekkimist ja saad tugeva aluse.",
+      "Jõu- ja üldkehaline treening aitab sul muutuda tugevamaks, vastupidavamaks ja liikuvamaks. Treeningud on läbimõeldud ja eesmärgipõhised ning arendavad kehalisi võimeid ja aitavad ennetada vigastusi. Kuigi seda treening meetodit kasutavad palju sportlased, sobib see suurepäraselt ka igapäevase vormi ja tervise parandamiseks.",
   },
   {
-    question: "Kui tihti peaksin treenima?",
+    question: "Kellele jõutreeningud sobivad?",
     answer:
-      "Optimaalne treeningsagedus sõltub Sinu eesmärkidest ja elustiilist. Algajatele soovitan alustada 2-3 treeninguga nädalas, et keha saaks piisavalt taastuda. Edasijõudnutele võib sobida 4-5 treeningut nädalas.",
+      "Jõutreening sobib kõigile – nii harrastajatele kui ka kogenud treenijatele, sportlastele, kontoritöötajatele, eakamatele ning neile, kes taastuvad vigastusest. Programm kohandatakse alati sinu taseme ja eesmärkide järgi.",
   },
   {
-    question: "Kas ma pean järgima kindlat dieeti?",
+    question: "Kas mul peab olema varasem treeningkogemus?",
     answer:
-      "Ei pea järgima ranget dieeti. Aitan Sul luua jätkusuutlikke toitumisharjumusi, mis sobivad Sinu elustiiliga. Fookus on tasakaalustatud toitumisel, mitte piiravatel dieetidel.",
+      "Ei pea. Paljud alustavad täiesti nullist. Alustame alati Sinule sobiva koormusega ja liigume edasi tempos, mis on sulle turvaline ja jõukohane.",
   },
   {
-    question: "Kui kiiresti tulemusi näen?",
-    answer:
-      "Esimesi muutusi enesetundes ja energiatasemes märkad juba esimeste nädalate jooksul. Nähtavad füüsilised muutused ilmnevad tavaliselt 4-8 nädala pärast järjepideva treenimisega.",
+    question: "Milliseid tulemusi on võimalik saavutada?",
+    answer: `Jõu- ja üldkehaline treening aitab sul:<br />
+- saada tugevamaks ja kasvatada lihasmassi<br />
+- parandada sportlikku vormi<br />
+- muuta kehakoostist<br />
+- parandada liikuvust ja painduvust<br />
+- vähendada vigastuste riski<br />
+- tunda end paremini ja enesekindlamalt`,
   },
   {
-    question: "Mis juhtub, kui pean treeningu tühistama?",
+    question: "Kuidas treeningprogramm koostatakse?",
     answer:
-      "Treeningu saab tühistada vähemalt 24 tundi ette ilma lisatasuta. Hilisema tühistamise korral läheb treening kaotsi. Erandkorras leiame alati lahenduse.",
+      "Programm luuakse personaalselt sulle. Arvesse võetakse sinu  kehalist võimekust, varasemaid vigastusi, elustiili ja eesmärke. Treeninguid kohandatakse järepidevalt vastavalt sinu arengule.",
   },
   {
-    question: "Kas pakud ka online treeninguid?",
+    question: "Kui tihti peaks treenima?",
     answer:
-      "Jah! Pakun nii online juhendamist kui ka personaalseid treeningkavasid. Online juhendamine sisaldab kuupõhist kava, pidevat tagasisidet, videoanalüüse ja toitumisnõustamist.",
+      "Enamasti piisab 2–4 treeningust nädalas. Oluline on järjepidevus ja treeningute kvaliteet, mitte iga päev treenimine.",
   },
   {
-    question: "Milline varustus mul vaja on?",
+    question: "Kas jõutreening on ohutu?",
     answer:
-      "Treeninguks piisab mugavatest spordiriietest ja tossudest. Kõik vajalikud vahendid on jõusaalis olemas. Koduseks treeninguks soovitan soetada kummilindid ja joogateki.",
+      "Jah. Õige juhendamise ja läbimõeldud intensiivsusega on jõutreening turvaline. Pöörame palju tähelepanu tehnikale ja korrektsele sooritusele.",
   },
   {
-    question: "Kas saab treenida ka sõbraga koos?",
+    question: "Kas treeningud sobivad ka vigastuste korral?",
     answer:
-      "Kindlasti! Pakun spetsiaalseid paarispersonaaltreeningu pakette. See on suurepärane viis hoida motivatsiooni ja jagada kulusid sõbraga.",
+      "Jah. Harjutusi saab kohandada vastavalt vigastustele või liikumispiirangutele.",
+  },
+  {
+    question: "Kui pikad on treeningud?",
+    answer:
+      "Treening kestab tavaliselt 60min.",
+  },
+  {
+    question: "Millist varustust mul vaja on?",
+    answer:
+      "Kohapeal jõusaalis treenides on kogu varustus olemas. Online-treeningud kohandatakse vastavalt sellele, kas treenid kodus või jõusaalis.",
+  },
+  {
+    question: "Kui kiiresti tulemusi näeb?",
+    answer:
+      "Enamasti on esimesed muutused tunda juba 3–6 nädalaga. Silmaga nähtavad tulemused ilmnevad tavaliselt 8–12 nädalaga, kui treenid ja toitud järjepidevalt.",
+  },
+  {
+    question: "Kas annate ka toitumisnõu?",
+    answer:
+      "Anname üldisi toitumissoovitusi, mis toetavad treeningut ja taastumist. Täpsema toitumiskava puhul soovitame vajadusel spetsialisti.",
+  },
+  {
+    question: "Kuidas alustada?",
+    answer:
+      "Alustamiseks broneeri konsultatsioon või võta ühendust Minuga kodulehe kaudu. Räägime sinu eesmärkidest ja paneme koos paika treeningplaani, mis sulle päriselt sobib.",
   },
 ];
 
@@ -89,7 +118,14 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
           isOpen ? "max-h-96 pb-5" : "max-h-0"
         }`}
       >
-        <p className="text-gray-400 leading-relaxed px-2">{answer}</p>
+        <div className="text-gray-400 leading-relaxed px-2">
+          {answer.split('<br />').map((line, index, array) => (
+            <span key={index}>
+              {line}
+              {index < array.length - 1 && <br />}
+            </span>
+          ))}
+        </div>
       </div>
     </div>
   );
@@ -140,25 +176,24 @@ export default function Home() {
           >
             <motion.div variants={fadeInUp} className="mb-6">
               <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400">
-                <Sparkles className="w-4 h-4" />
-                Sihtgrupp: Harrastajad, sportlased ja noorsportlased
+                Sihtgrupp: sportlased, noorsportlased ja harrastajad
               </span>
             </motion.div>
 
             <motion.h1
               variants={fadeInUp}
-              className="text-4xl md:text-6xl lg:text-7xl font-semibold text-white leading-[1.1] tracking-tight mb-6"
+              className="text-4xl md:text-6xl lg:text-5xl font-semibold text-white leading-[1.1] tracking-tight mb-6"
             >
-              Üldkehaline ettevalmistus vastavalt Sinu füüsilistele eesmärkidele
-              või spordialale.
+              Üldkehaline ettevalmistus sportlastele ja personaaltreening
+              harrastajatele
             </motion.h1>
 
             <motion.p
               variants={fadeInUp}
               className="max-w-2xl text-gray-400 text-lg md:text-xl leading-relaxed mb-10"
             >
-              Professionaalne juhendamine ja kohandatud programmid, mis on
-              Algajatest kuni sportlasteni aitanud oma taset tõsta.
+              Professionaalne juhendamine ja individuaalsed treening-programmid,
+              harrastajatele ja sportlastele
             </motion.p>
 
             <motion.div
@@ -183,7 +218,7 @@ export default function Home() {
                     .querySelector("#services")
                     ?.scrollIntoView({ behavior: "smooth" })
                 }
-                className="text-gray-300 hover:text-white hover:bg-white/5 rounded-full px-8 py-6 font-medium text-base group"
+                className="text-gray-300 hover:text-white hover:bg-white/5 rounded-full border border-white/10 px-8 py-6 font-medium text-base group"
                 data-testid="button-hero-learn"
               >
                 Vaata programme
@@ -201,16 +236,16 @@ export default function Home() {
             {[...Array(2)].map((_, setIndex) => (
               <div key={setIndex} className="flex shrink-0 gap-4 px-2">
                 {[
-                  "Personaaltreening",
-                  "Toitumiskavad",
-                  "Online juhendamine",
-                  "Rühmatreeningud",
-                  "Keha analüüs",
-                  "Edusammude jälgimine",
                   "Jõutreening",
-                  "Kaalulangetus",
-                  "Venitusharjutused",
-                  "Vigastusest taastumine",
+                  "Toitumisnõustamine",
+                  "Taastumissoovitused",
+                  "Elustiil",
+                  "Harjumused",
+                  "Jooksja jõutreening",
+                  "Üldkehaline ettevalmistus",
+                  "Grupitreeningud",
+                  "Treeningkava",
+                  "Online juhendamine",
                 ].map((feature, i) => (
                   <span
                     key={`${setIndex}-${i}`}
@@ -230,10 +265,10 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
             {[
-              { value: "50+", label: "Rahulolevat klienti" },
-              { value: "7+", label: "Aastat kogemust" },
-              { value: "5000+", label: "Läbitud treeningut" },
-              { value: "100%", label: "Hea enesetunne" },
+              { value: "5+", label: "Aastat treenritööd" },
+              { value: "10+", label: "Aastat spordis" },
+              { value: "500+", label: "Eratreeningut" },
+              { value: "100+", label: "Õnnelikku klienti" },
             ].map((stat, i) => (
               <motion.div
                 key={i}

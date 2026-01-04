@@ -13,15 +13,45 @@ import { useToast } from "@/hooks/use-toast";
 // Formspree vorm - loo tasuta konto formspree.io ja asenda see oma vormi ID-ga
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mdakdjbw";
 
-const packages = [
-  { value: "1x-personaaltreening", label: "1x Personaaltreening - 50€" },
-  { value: "personaaltreening-sobraga", label: "Personaaltreening sõbraga - 75€" },
-  { value: "7x-personaaltreening", label: "7x Personaaltreening - 350€" },
-  { value: "7x-personaaltreening-sobraga", label: "7x Personaaltreening sõbraga - 495€" },
-  { value: "treeningkava", label: "Treeningkava - 60€" },
-  { value: "online-juhendamine", label: "Online juhendamine - 150€/kuu" },
-  { value: "online-juhendamine-3-kuud", label: "Online juhendamine 3 kuud - 450€" },
+const packageCategories = [
+  {
+    category: "Harrastajad",
+    packages: [
+      { value: "1x-personaaltreening", label: "1x Personaaltreening - 60€" },
+      { value: "personaaltreening-sobraga", label: "Personaaltreening sõbraga - 78€" },
+      { value: "7x-personaaltreening", label: "7x Personaaltreening - 366€" },
+      { value: "7x-personaaltreening-sobraga", label: "7x Personaaltreening sõbraga - 479€" },
+      { value: "treeningkava", label: "Treeningkava - 60€" },
+    ],
+  },
+  {
+    category: "Sportlased",
+    packages: [
+      { value: "1x-ÜKE-treening", label: "ÜKE sportlasele - 80€" },
+      { value: "7x-ÜKE-treening", label: "7x ÜKE sportlasele - 366€" },
+      { value: "grupitreening", label: "Grupitreening (Max 4 inimest) - 100€" },
+      { value: "sportlase-treeningkava", label: "Treeningkava sportlasele - 80€" },
+    ],
+  },
+  {
+    category: "Online coaching",
+    packages: [
+      { value: "online-juhendamine", label: "Online juhendamine - 150€/kuu" },
+      { value: "online-juhendamine-3-kuud", label: "Online juhendamine 3 kuud - 450€" },
+    ],
+  },
+  {
+    category: "Kuupõhised paketid",
+    packages: [
+      { value: "1x-nadalas-kuupõhine", label: "Kuupõhine liikmesus 1-treening nädalas - 180€" },
+      { value: "2x-nadalas-kuupõhine", label: "Kuupõhine liikmesus 2-treening nädalas - 320€" },
+      { value: "3x-nadalas-kuupõhine", label: "Kuupõhine liikmesus 3-treening nädalas - 420€" },
+    ],
+  },
 ];
+
+// Flatten packages for lookup
+const packages = packageCategories.flatMap(cat => cat.packages);
 
 const contactFormSchema = z.object({
   name: z.string().min(1, "Nimi on kohustuslik"),
@@ -117,7 +147,7 @@ export function ContactForm() {
                 <FormLabel className="text-sm text-gray-400">E-post</FormLabel>
                 <FormControl>
                   <Input 
-                    placeholder="sina@näide.ee" 
+                    placeholder="sina@email.ee" 
                     {...field} 
                     className="bg-white/5 border-white/10 text-white rounded-xl focus:ring-white/20 h-12 placeholder:text-gray-500"
                     data-testid="input-email"
@@ -143,15 +173,25 @@ export function ContactForm() {
                     <SelectValue placeholder="Vali pakett" />
                   </SelectTrigger>
                 </FormControl>
-                <SelectContent className="bg-zinc-900 border-white/10">
-                  {packages.map((pkg) => (
-                    <SelectItem 
-                      key={pkg.value} 
-                      value={pkg.value}
-                      className="text-white focus:bg-white/10 focus:text-white"
-                    >
-                      {pkg.label}
-                    </SelectItem>
+                <SelectContent className="bg-zinc-900 border-white/10 max-h-[400px]">
+                  {packageCategories.map((category, categoryIndex) => (
+                    <div key={category.category}>
+                      {categoryIndex > 0 && (
+                        <div className="h-px bg-white/10 mx-2 my-2" />
+                      )}
+                      <div className="px-3 py-2 text-xs font-semibold text-gray-400 uppercase tracking-wider">
+                        {category.category}
+                      </div>
+                      {category.packages.map((pkg) => (
+                        <SelectItem 
+                          key={pkg.value} 
+                          value={pkg.value}
+                          className="text-white focus:bg-white/10 focus:text-white pl-6"
+                        >
+                          {pkg.label}
+                        </SelectItem>
+                      ))}
+                    </div>
                   ))}
                 </SelectContent>
               </Select>
@@ -167,7 +207,7 @@ export function ContactForm() {
               <FormLabel className="text-sm text-gray-400">Sõnum</FormLabel>
               <FormControl>
                 <Textarea 
-                  placeholder="Räägi meile oma treeningueesmärkidest..." 
+                  placeholder="Räägi mulle oma treeningueesmärkidest..." 
                   {...field} 
                   className="bg-white/5 border-white/10 text-white rounded-xl focus:ring-white/20 min-h-[140px] resize-none placeholder:text-gray-500"
                   data-testid="input-message"

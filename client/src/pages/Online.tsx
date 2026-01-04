@@ -13,7 +13,9 @@ import {
   User,
   Target,
   MessageCircle,
+  ArrowRight,
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import heroImage from "@assets/Kala_tossu_1767425326571.jpg";
 import aboutImage from "@assets/Kalav3_1767425407543.jpg";
@@ -177,6 +179,24 @@ export default function Online() {
                     className="w-full h-full object-cover relative z-0"
                   />
                 </div>
+                
+                {/* CTA Button */}
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.6 }}
+                  className="mt-8 text-center"
+                >
+                  <Link href="/kontakt">
+                    <Button
+                      className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-6 font-medium text-base group"
+                      data-testid="button-cta-online"
+                    >
+                      Võta ühendust
+                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                    </Button>
+                  </Link>
+                </motion.div>
               </motion.div>
             </div>
           </div>

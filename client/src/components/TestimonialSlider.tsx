@@ -4,23 +4,53 @@ import { useState, useRef } from "react";
 const testimonials = [
   {
     quote: "Ma ei uskunud, et suudan sellised tulemused saavutada vaid 3 kuuga. Distsipliin, mida siin õppisin, muutis mu elu.",
-    author: "Kadri"
+    author: "Aleksander",
+    authorJob: "BigBank Tartu võrkpallur"
   },
   {
     quote: "Tähelepanu detailidele vormi ja tehnika osas on võrratu. Mingeid vigastusi, ainult puhas progress.",
-    author: "Marten"
+    author: "Katriin",
+    authorJob: "Kestvusratsutaja"
   },
   {
     quote: "See on väljakutsuv, see on tasustav ja see on absoluutselt iga treeningu väärt. Parim investeering endasse.",
-    author: "Tõnis"
+    author: "Kaur",
+    authorJob: "Korvpallur"
   },
   {
     quote: "Professionaalne lähenemine ja individuaalne tähelepanu igal treeningul. Soovitan soojalt!",
-    author: "Liisa"
+    author: "Tauri Kilk",
+    authorJob: "Eesti esi meessulgpallur"
   },
   {
     quote: "Lõpuks ometi treener, kes mõistab minu eesmärke ja aitab neid saavutada. Olen väga tänulik!",
-    author: "Priit"
+    author: "Tiiu",
+    authorJob: "Harrastussportlane"
+  },
+  {
+    quote: "Lõpuks ometi treener, kes mõistab minu eesmärke ja aitab neid saavutada. Olen väga tänulik!",
+    author: "Annika",
+    authorJob: "Harrastus tennisist"
+  },
+  {
+    quote: "Lõpuks ometi treener, kes mõistab minu eesmärke ja aitab neid saavutada. Olen väga tänulik!",
+    author: "Kaspar",
+    authorJob: "Sulgpallur"
+  },
+  {
+    quote: "Lõpuks ometi treener, kes mõistab minu eesmärke ja aitab neid saavutada. Olen väga tänulik!",
+    author: "Kaspar Kort",
+    authorJob: "Maadleja"
+  },
+  {
+    quote: "Lõpuks ometi treener, kes mõistab minu eesmärke ja aitab neid saavutada. Olen väga tänulik!",
+    author: "Indrek",
+    authorJob: "Ettevõtja"
+  },
+  {
+    quote: "Lõpuks ometi treener, kes mõistab minu eesmärke ja aitab neid saavutada. Olen väga tänulik!",
+    author: "Richard",
+    authorJob: "Padelimängija"
   }
 ];
 
@@ -82,6 +112,7 @@ export function TestimonialSlider() {
                     "{story.quote}"
                   </p>
                   <div className="font-medium text-white">{story.author}</div>
+                  <div className="font-light text-sm text-gray">{story.authorJob}</div>
                 </div>
               </div>
             ))}

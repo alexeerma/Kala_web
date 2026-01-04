@@ -190,49 +190,48 @@ export default function Hinnakiri() {
   const packages = [
     {
       title: "1x Personaaltreening",
-      price: "50€",
+      price: "60€",
       description: "Ideaalne alustuseks",
       features: [
         "Saame tuttavaks",
-        "Paneme paika esialgsed eesmärgid",
+        "Teeme näidisteeningu",
         "Õpime esmased vajalikud harjutused",
+        "Ajaline kestvus 1h-1,5h",
       ],
     },
     {
       title: "Personaaltreening sõbraga",
-      price: "75€",
+      price: "78€",
       description: "Treeni koos sõbraga",
       features: [
         "Saame tuttavaks",
         "Paneme paika esialgsed eesmärgid Teie mõlema jaoks",
         "Õpime esmased vajalikud harjutused",
-        "Motiveeriv keskkond",
+        "Ajaline kestvus 1h-1,5h",
       ],
     },
     {
       title: "7x Personaaltreening",
-      price: "350€",
+      price: "366€",
       description: "Terviklik treeningpakett",
       popular: true,
       features: [
-        "Investeering tervisesse",
-        "Märgatavalt parem enesetunne",
-        "Harjutuste tehnika paraneb",
+        "Pikemaajalisem investeering",
+        "Paneme paika esialgsed eesmärgid",
+        "Käime läbi harjutused ja tehnika",
         "Räägime toitumise ja taastumise olulisusest",
-        "Energiatase on tõusnud",
         "Omandad harjutused iseseisvaks treenimiseks",
       ],
     },
     {
       title: "7x Personaaltreening sõbraga",
-      price: "495€",
+      price: "479€",
       description: "Terviklik pakett kahele",
       features: [
-        "Investeering tervisesse",
-        "Märgatavalt parem enesetunne",
-        "Harjutuste tehnika paraneb",
+        "Treening koos sõbraga",
+        "Eesmärgid Teie mõlema jaoks",
+        "Parandame tehnikat",
         "Räägime toitumise ja taastumise olulisusest",
-        "Energiatase on tõusnud",
         "Omandate mõlemad harjutused iseseisvaks või koos treenimiseks",
       ],
     },
@@ -301,14 +300,14 @@ export default function Hinnakiri() {
         <div className="container mx-auto px-6 text-center">
           <motion.div initial="hidden" animate="visible" variants={fadeInUp}>
             <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400 mb-6">
-              Hinnakiri
+              Harrastaja hinnakiri
             </span>
             <h1 className="text-4xl md:text-6xl font-semibold text-white mb-6">
               Vali endale sobiv pakett
             </h1>
             <p className="max-w-2xl mx-auto text-gray-400 text-lg md:text-xl leading-relaxed">
-              Personaalsed treeningpaketid igale tasemele. Alusta oma teekonda
-              parema tervise ja enesetunde poole.
+              Personaalsed treeningpaketid igale harrastaja tasemele. Alusta oma
+              teekonda parema tervise ja enesetunde poole.
             </p>
           </motion.div>
         </div>
@@ -343,7 +342,10 @@ export default function Hinnakiri() {
           </p>
           <div className="flex flex-wrap justify-center gap-6 max-w-4xl mx-auto mt-12">
             {packages.slice(5, 7).map((pkg, i) => (
-              <div key={`online-${i}`} className="w-full md:w-[calc(50%-12px)] lg:w-[calc(50%-12px)]">
+              <div
+                key={`online-${i}`}
+                className="w-full md:w-[calc(50%-12px)] lg:w-[calc(50%-12px)]"
+              >
                 <PriceCard {...pkg} />
               </div>
             ))}
@@ -360,8 +362,8 @@ export default function Hinnakiri() {
           <p className="text-gray-300 text-lg mb-8 max-w-xl mx-auto text-center">
             Sobivus- püsiklientidele Treeningud- toimuvad kliendiga kokkulepitud
             aegadel. <br />
-            Tühistamine- vähemalt 24h ette, hilise etteteatamisega
-            treening loetakse kasutatuks.
+            Tühistamine- vähemalt 24h ette, hilise etteteatamisega treening
+            loetakse kasutatuks.
           </p>
           <div
             className={`grid gap-6 max-w-6xl mx-auto mt-12 ${
@@ -426,21 +428,21 @@ export default function Hinnakiri() {
             </div>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://www.instagram.com/rasmuskala/"
                 className="text-gray-500 hover:text-white transition-colors"
                 data-testid="link-social-instagram"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/rasmus.kalaa"
                 className="text-gray-500 hover:text-white transition-colors"
                 data-testid="link-social-facebook"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/in/rasmus-kala-534295157/"
                 className="text-gray-500 hover:text-white transition-colors"
                 data-testid="link-social-linkedin"
               >
