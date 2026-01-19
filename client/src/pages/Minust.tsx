@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/Navbar";
+import { SEO } from "@/components/SEO";
 import { motion } from "framer-motion";
 import {
   Target,
@@ -7,6 +8,7 @@ import {
   Instagram,
   Facebook,
   Linkedin,
+  ArrowRight,
 } from "lucide-react";
 import { Link } from "wouter";
 import { Button } from "@/components/ui/button";
@@ -21,6 +23,12 @@ const fadeInUp = {
 export default function Minust() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <SEO
+        title="Rasmus Kala - Minust"
+        description="Tutvu RasmusKalaga - personaaltreener, kes aitab Sul saavutada oma treeningueesmärke. Kogenud treener sportlastele ja harrastajatele."
+        url="https://rasmuskala.ee/minust"
+        keywords="rasmus kala eratreening, rasmus kala, personaaltreening, minust"
+      />
       <Navbar />
 
       {/* Hero */}
@@ -38,6 +46,24 @@ export default function Minust() {
             <h1 className="text-4xl md:text-6xl font-semibold text-white mb-6">
               Tutvu lähemalt
             </h1>
+
+            {/* CTA Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="mt-8 text-center"
+            >
+              <Link href="/kontakt">
+                <Button
+                  className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-6 font-medium text-base group"
+                  data-testid="button-cta-online"
+                >
+                  Võta ühendust
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -83,8 +109,9 @@ export default function Minust() {
                     erialaseid koolitusi.
                   </p>
                   <p>
-                    Mul on olemas kogemus ÜKE treenerina pallimängualade
-                    (jalgpall, korvpall), reketialade (tennis, sulgpall) kui ka
+                    Mul on olemas kogemus ÜKE treenerina pallimängualade (Tartu
+                    Ülikooli Korvpallikool, Tartu JK Welco), reketialade
+                    (Tähtvere Tennisekool, sulgpalliklubi Triiton) kui ka
                     individuaal-sportlaste treenimisel (kergejõustik, maadlus,
                     ratsutajad).
                   </p>
@@ -199,23 +226,6 @@ export default function Minust() {
                 ))}
               </div>
             </motion.div>
-
-            {/* CTA */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.3 }}
-              className="text-center"
-            >
-              <Link href="/kontakt">
-                <Button
-                  className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-6 font-medium"
-                  data-testid="button-about-contact"
-                >
-                  Võta ühendust
-                </Button>
-              </Link>
-            </motion.div>
           </div>
         </div>
       </section>
@@ -242,21 +252,27 @@ export default function Minust() {
             </div>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://www.instagram.com/rasmuskala/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-500 hover:text-white transition-colors"
                 data-testid="link-social-instagram"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/rasmus.kalaa"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-500 hover:text-white transition-colors"
                 data-testid="link-social-facebook"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/in/rasmus-kala-534295157/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-500 hover:text-white transition-colors"
                 data-testid="link-social-linkedin"
               >

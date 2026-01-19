@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { TestimonialSlider } from "@/components/TestimonialSlider";
+import { SEO } from "@/components/SEO";
 import { motion } from "framer-motion";
 import {
   ArrowRight,
@@ -68,8 +69,7 @@ const faqs = [
   },
   {
     question: "Kui pikad on treeningud?",
-    answer:
-      "Treening kestab tavaliselt 60min.",
+    answer: "Treening kestab tavaliselt 60min.",
   },
   {
     question: "Millist varustust mul vaja on?",
@@ -108,18 +108,16 @@ function FAQItem({ question, answer }: { question: string; answer: string }) {
       >
         <span className="font-medium text-white pr-4">{question}</span>
         <ChevronDown
-          className={`w-5 h-5 text-gray-400 shrink-0 transition-transform ${
-            isOpen ? "rotate-180" : ""
-          }`}
+          className={`w-5 h-5 text-gray-400 shrink-0 transition-transform ${isOpen ? "rotate-180" : ""
+            }`}
         />
       </button>
       <div
-        className={`overflow-hidden transition-all duration-300 ${
-          isOpen ? "max-h-96 pb-5" : "max-h-0"
-        }`}
+        className={`overflow-hidden transition-all duration-300 ${isOpen ? "max-h-96 pb-5" : "max-h-0"
+          }`}
       >
         <div className="text-gray-400 leading-relaxed px-2">
-          {answer.split('<br />').map((line, index, array) => (
+          {answer.split("<br />").map((line, index, array) => (
             <span key={index}>
               {line}
               {index < array.length - 1 && <br />}
@@ -149,6 +147,12 @@ const staggerContainer = {
 export default function Home() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <SEO
+        title="Rasmus Kala personaaltreeningud"
+        description="Personaaltreeningud sportlastele ja harrastajatele. Üldkehaline ettevalmistus, jõutreeningud ja online juhendamine. Alusta oma teekonda parema tervise poole."
+        url="https://rasmuskala.ee"
+        keywords="rasmus kala, üldkehaline ettevalmistus, personaaltreening harrastajatele, personaaltreening Tallinnas, ÜKE sportlastele, online coaching, eratreening, personaaltreening"
+      />
       <Navbar />
 
       {/* Hero Section */}
@@ -174,12 +178,6 @@ export default function Home() {
             variants={staggerContainer}
             className="flex flex-col items-center text-center max-w-4xl mx-auto"
           >
-            <motion.div variants={fadeInUp} className="mb-6">
-              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400">
-                Sihtgrupp: sportlased, noorsportlased ja harrastajad
-              </span>
-            </motion.div>
-
             <motion.h1
               variants={fadeInUp}
               className="text-4xl md:text-6xl lg:text-5xl font-semibold text-white leading-[1.1] tracking-tight mb-6"
@@ -200,30 +198,34 @@ export default function Home() {
               variants={fadeInUp}
               className="flex flex-wrap items-center justify-center gap-4"
             >
-              <Button
-                onClick={() =>
-                  document
-                    .querySelector("#contact")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-6 font-medium text-base"
-                data-testid="button-hero-start"
-              >
-                Alusta kohe
-              </Button>
-              <Button
-                variant="ghost"
-                onClick={() =>
-                  document
-                    .querySelector("#services")
-                    ?.scrollIntoView({ behavior: "smooth" })
-                }
-                className="text-gray-300 hover:text-white hover:bg-white/5 rounded-full border border-white/10 px-8 py-6 font-medium text-base group"
-                data-testid="button-hero-learn"
-              >
-                Vaata programme
-                <ChevronRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
+              <Link href="/kontakt">
+                <Button
+                  onClick={() =>
+                    document
+                      .querySelector("#contact")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
+                  className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-6 font-medium text-base"
+                  data-testid="button-hero-start"
+                >
+                  Alusta kohe
+                </Button>
+              </Link>
+              <Link href="/hinnakiri">
+                <Button
+                  variant="ghost"
+                  onClick={() =>
+                    document
+                      .querySelector("#services")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
+                  className="text-gray-300 hover:text-white hover:bg-white/5 rounded-full border border-white/10 px-8 py-6 font-medium text-base group"
+                  data-testid="button-hero-learn"
+                >
+                  Vaata programme
+                  <ChevronRight className="ml-1 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
             </motion.div>
           </motion.div>
         </div>
@@ -288,6 +290,181 @@ export default function Home() {
         </div>
       </section>
 
+      {/* What I Do Section */}
+      <section className="py-16 md:py-24 border-t border-white/5">
+        <div className="container mx-auto px-6">
+          <div className="max-w-4xl mx-auto text-center mb-12">
+            <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 text-sm text-gray-400 mb-4">
+              Mida ma teen
+            </span>
+            <h2 className="text-3xl md:text-5xl font-semibold text-white mb-6">
+              Personaaltreeningud Tartus, Tallinnas ja online's.
+            </h2>
+            <div className="space-y-4 text-gray-400 text-lg leading-relaxed text-left max-w-3xl mx-auto">
+              <p>
+                Olen sertifitseeritud{" "}
+                <strong className="text-white">jõusaalitreener</strong>, kes
+                pakub{" "}
+                <strong className="text-white">personaaltreeninguid</strong> nii
+                harrastajatele kui ka sportlastele. Minu teenused hõlmavad{" "}
+                <strong className="text-white">jõutreeninguid</strong>,{" "}
+                <strong className="text-white">
+                  üldkehalist ettevalmistust (ÜKE)
+                </strong>{" "}
+                sportlastele,{" "}
+                <strong className="text-white">online juhendamist</strong> ja{" "}
+                <strong className="text-white">toitumisnõustamist</strong>.
+                Treenin kliente nii jõusaalis{" "}
+                <strong className="text-white">Tallinnas</strong> kui ka{" "}
+                <strong className="text-white">online&apos;s</strong>, pakkudes
+                paindlikke lahendusi igale tasemele.
+              </p>
+              <p>
+                Minu lähenemine põhineb turvalisel tehnikal,{" "}
+                <strong className="text-white">vigastuste ennetamisel</strong>{" "}
+                ja järjepideval arengul. Kasutan tõestatud meetodeid, mis
+                aitavad saavutada paremaid tulemusi – olgu siis eesmärgiks{" "}
+                <strong className="text-white">jõu kasvatamine</strong>, vormi
+                parandamine, sooritusvõime tõstmine või tervise säilitamine.
+                Pakun ka{" "}
+                <strong className="text-white">grupitreeninguid</strong> kuni 4
+                inimesele, mis on suurepärane valik tiimikaaslastele või
+                sõpradele.
+              </p>
+            </div>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.1 }}
+              className="p-8 rounded-3xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-colors"
+            >
+              <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-4">
+                <Users className="w-5 h-5 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-3">
+                Personaaltreening harrastajale
+              </h3>
+              <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                Individuaalsed{" "}
+                <strong className="text-gray-300">treeningkavad</strong> ja
+                juhendamine, mis aitavad parandada vormi, enesetunnet ja
+                tervist. Sobib nii algajale kui ka kogenud treenijale. Pakun{" "}
+                <strong className="text-gray-300">personaaltreeninguid</strong>{" "}
+                nii üksiktreeningutena kui ka pikaajaliste pakettidena.{" "}
+                <strong className="text-gray-300">Jõutreening</strong>{" "}
+                harrastajatele on suunatud turvalise tehnika õpetamisele ja
+                järjepidevale arengule.
+              </p>
+              <ul className="text-gray-500 text-xs space-y-2">
+                <li className="flex items-center gap-2">
+                  <span className="text-white">•</span>
+                  <span>Jõutreening algajatele ja kogenud treenijatele</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-white">•</span>
+                  <span>Vormi parandamine ja kehakoostise muutmine</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-white">•</span>
+                  <span>Toitumisnõustamine ja elustiili muutmine</span>
+                </li>
+              </ul>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
+              className="p-8 rounded-3xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-colors"
+            >
+              <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-4">
+                <Target className="w-5 h-5 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-3">
+                Üldkehaline ettevalmistus (ÜKE) sportlastele
+              </h3>
+              <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                Spordiala spetsiifiline{" "}
+                <strong className="text-gray-300">ÜKE treening</strong>{" "}
+                sportlastele ja noorsportlastele, mis tõstab sooritusvõimet,
+                arendab jõudu ja aitab vähendada vigastuste riski.{" "}
+                <strong className="text-gray-300">
+                  Üldkehaline ettevalmistus
+                </strong>{" "}
+                on oluline osa iga spordiharjutuse treeningkavast. Pakun{" "}
+                <strong className="text-gray-300">ÜKE treeninguid</strong> nii
+                individuaalselt kui ka grupitreeningutena.
+              </p>
+              <ul className="text-gray-500 text-xs space-y-2">
+                <li className="flex items-center gap-2">
+                  <span className="text-white">•</span>
+                  <span>ÜKE treening noorsportlastele ja tippsportlastele</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-white">•</span>
+                  <span>Vigastuste ennetamine ja taastumise kiirendamine</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-white">•</span>
+                  <span>Sooritusvõime parandamine ja jõu arendamine</span>
+                </li>
+              </ul>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.3 }}
+              className="p-8 rounded-3xl bg-white/[0.03] border border-white/10 hover:border-white/20 transition-colors"
+            >
+              <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center mb-4">
+                <Zap className="w-5 h-5 text-white" />
+              </div>
+              <h3 className="text-xl font-semibold text-white mb-3">
+                Online juhendamine ja treeningkavad
+              </h3>
+              <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                Paindlik{" "}
+                <strong className="text-gray-300">online coaching</strong> ja{" "}
+                <strong className="text-gray-300">online juhendamine</strong>,
+                kus saad personaalse treeningkava, videoanalüüsi ja jooksvat
+                tagasisidet – treeni seal, kus sulle sobib.{" "}
+                <strong className="text-gray-300">
+                  Online personaaltreening
+                </strong>{" "}
+                on ideaalne lahendus neile, kes soovivad treenida kodus või
+                reisides. Pakun ka{" "}
+                <strong className="text-gray-300">
+                  kuupõhiseid treeningkavasid
+                </strong>{" "}
+                ja <strong className="text-gray-300">toitumisnõustamist</strong>
+                .
+              </p>
+              <ul className="text-gray-500 text-xs space-y-2">
+                <li className="flex items-center gap-2">
+                  <span className="text-white">•</span>
+                  <span>Kuupõhised treeningkavad ja pidev tagasiside</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-white">•</span>
+                  <span>Videoanalüüsid ja tehnika parandamine</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <span className="text-white">•</span>
+                  <span>Toitumisnõustamine ja elustiili kohandamine</span>
+                </li>
+              </ul>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* About Section */}
       <section id="about" className="py-20 md:py-28">
         <div className="container mx-auto px-6">
@@ -306,8 +483,10 @@ export default function Home() {
                 />
               </div>
               <div className="absolute -bottom-6 -right-6 bg-white text-black rounded-2xl p-6 shadow-2xl">
-                <div className="text-3xl font-semibold">7+</div>
-                <div className="text-sm text-gray-600">Aastat kogemust</div>
+                <div className="text-3xl font-semibold">5+</div>
+                <div className="text-sm text-gray-600">
+                  Aastat treeneri kogemust
+                </div>
               </div>
             </motion.div>
 
@@ -332,9 +511,7 @@ export default function Home() {
                   aidata ka Sinul realiseerida enda kehalist potentsiaali.
                 </p>
                 <p>
-                  Üle 10 aasta kogemusega jõu- ja liikumisharjutustes olen
-                  aidanud kliente muuta mitte ainult oma keha, vaid ka
-                  enesekindlust ja distsipliini.
+                  Üle 10 aastase kogemusega spordis ja aktiivses eluviisis olen aidanud klientidel muuta mitte ainult oma füüsilist tervist, vaid ka enesekindlust ja distsipliini treeningprotsessis.
                 </p>
               </div>
 
@@ -492,6 +669,8 @@ export default function Home() {
             <div className="flex gap-4">
               <a
                 href="https://www.instagram.com/rasmuskala/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-500 hover:text-white transition-colors"
                 data-testid="link-social-instagram"
               >
@@ -499,6 +678,8 @@ export default function Home() {
               </a>
               <a
                 href="https://www.facebook.com/rasmus.kalaa"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-500 hover:text-white transition-colors"
                 data-testid="link-social-facebook"
               >
@@ -506,6 +687,8 @@ export default function Home() {
               </a>
               <a
                 href="https://www.linkedin.com/in/rasmus-kala-534295157/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-500 hover:text-white transition-colors"
                 data-testid="link-social-linkedin"
               >

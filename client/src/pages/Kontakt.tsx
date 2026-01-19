@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { ContactForm } from "@/components/ContactForm";
+import { SEO } from "@/components/SEO";
 import { motion } from "framer-motion";
 import { MapPin, Mail, Phone, Building2, CreditCard, Instagram, Facebook, Linkedin } from "lucide-react";
 import { Link } from "wouter";
@@ -12,6 +13,12 @@ const fadeInUp = {
 export default function Kontakt() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <SEO
+        title="Kontakt"
+        description="Võta ühendust RasmusKalaga personaaltreeningute ja online juhendamise kohta. Vastame kõigile küsimustele ja leiame koos Sulle sobiva lahenduse."
+        url="https://rasmuskala.ee/kontakt"
+        keywords="Rasmus Kala, kontakt, personaaltreenig, eratreening"
+      />
       <Navbar />
 
       {/* Hero */}
@@ -33,13 +40,13 @@ export default function Kontakt() {
               Valmis alustama oma teekonda parema tervise poole? Täida vorm ja võtan Sinuga ühendust 24 tunni jooksul.
             </p>
             <div className="flex justify-center gap-4">
-              <a href="https://www.instagram.com/rasmuskala/" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors" data-testid="link-hero-instagram">
+              <a href="https://www.instagram.com/rasmuskala/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors" data-testid="link-hero-instagram">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="https://www.facebook.com/rasmus.kalaa" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors" data-testid="link-hero-facebook">
+              <a href="https://www.facebook.com/rasmus.kalaa" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors" data-testid="link-hero-facebook">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="https://www.linkedin.com/in/rasmus-kala-534295157/" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors" data-testid="link-hero-linkedin">
+              <a href="https://www.linkedin.com/in/rasmus-kala-534295157/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors" data-testid="link-hero-linkedin">
                 <Linkedin className="w-5 h-5" />
               </a>
             </div>
@@ -175,13 +182,13 @@ export default function Kontakt() {
               © {new Date().getFullYear()} RasmusKala. Kõik õigused kaitstud. | <a href="https://alexeerma.ee" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Web by Alexeerma</a>
             </div>
             <div className="flex gap-4">
-              <a href="#" className="text-gray-500 hover:text-white transition-colors" data-testid="link-social-instagram">
+              <a href="https://www.instagram.com/rasmuskala/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors" data-testid="link-social-instagram">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-500 hover:text-white transition-colors" data-testid="link-social-facebook">
+              <a href="https://www.facebook.com/rasmus.kalaa" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors" data-testid="link-social-facebook">
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="text-gray-500 hover:text-white transition-colors" data-testid="link-social-linkedin">
+              <a href="https://www.linkedin.com/in/rasmus-kala-534295157/" target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-white transition-colors" data-testid="link-social-linkedin">
                 <Linkedin className="w-5 h-5" />
               </a>
             </div>

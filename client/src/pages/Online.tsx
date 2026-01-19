@@ -1,5 +1,6 @@
 import { Navbar } from "@/components/Navbar";
 import { ContactForm } from "@/components/ContactForm";
+import { SEO } from "@/components/SEO";
 import { motion } from "framer-motion";
 import {
   MapPin,
@@ -28,6 +29,12 @@ const fadeInUp = {
 export default function Online() {
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <SEO
+        title="Rasmus Kala - Online coaching"
+        description="Personaalne ja paindlik online juhendamine. Koostan sulle personaalse treeningkava, kirjutan iga trenni ette. Treeni kus ja millal sulle sobib."
+        url="https://rasmuskala.ee/online"
+        keywords="online coaching, rasmus kala, eratreening, online treening, personaaltreening"
+      />
       <Navbar />
 
       {/* Hero */}
@@ -52,6 +59,8 @@ export default function Online() {
             <div className="flex justify-center gap-4">
               <a
                 href="https://www.instagram.com/rasmuskala/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
                 data-testid="link-hero-instagram"
               >
@@ -59,6 +68,8 @@ export default function Online() {
               </a>
               <a
                 href="https://www.facebook.com/rasmus.kalaa"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
                 data-testid="link-hero-facebook"
               >
@@ -66,12 +77,31 @@ export default function Online() {
               </a>
               <a
                 href="https://www.linkedin.com/in/rasmus-kala-534295157/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-colors"
                 data-testid="link-hero-linkedin"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
             </div>
+            {/* CTA Button */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.6 }}
+              className="mt-8 text-center"
+            >
+              <Link href="/kontakt">
+                <Button
+                  className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-6 font-medium text-base group"
+                  data-testid="button-cta-online"
+                >
+                  Võta ühendust
+                  <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                </Button>
+              </Link>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -81,7 +111,7 @@ export default function Online() {
         {/* Background Effects */}
         <div className="absolute inset-0 bg-gradient-to-b from-transparent via-white/[0.02] to-transparent"></div>
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(255,255,255,0.05)_0%,transparent_70%)]"></div>
-        
+
         <div className="container mx-auto px-6 relative z-10">
           <div className="max-w-5xl mx-auto">
             <div className="space-y-6 lg:space-y-8">
@@ -97,7 +127,7 @@ export default function Online() {
                   <div className="p-8 lg:p-10 rounded-3xl bg-gradient-to-br from-white/[0.08] to-white/[0.03] border border-white/20 backdrop-blur-sm shadow-2xl transition-all duration-300 hover:border-white/30 relative overflow-hidden group w-full flex flex-col">
                     {/* Subtle glow effect */}
                     <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.08] to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out -translate-x-full group-hover:translate-x-full"></div>
-                    
+
                     <div className="relative z-10 flex-1 flex flex-col">
                       <h3 className="font-semibold text-lg text-white mb-4">
                         Online coachingu info
@@ -121,45 +151,57 @@ export default function Online() {
                   className="flex flex-col justify-center space-y-6"
                 >
                   {/* Privaatne ja personaalne */}
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0">
-                    <User className="w-4 h-4 text-white" />
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0">
+                      <User className="w-4 h-4 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-medium text-white text-sm mb-0.5">
+                        Privaatne ja personaalne
+                      </h3>
+                      <p className="text-gray-400 text-sm leading-relaxed">
+                        Olen Sinu isiklik juhendaja treening teekonnal ja koos
+                        saavutame Sinu eesmärgid
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-medium text-white text-sm mb-0.5">Privaatne ja personaalne</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">
-                      Olen Sinu isiklik juhendaja treening teekonnal ja koos saavutame Sinu eesmärgid
-                    </p>
-                  </div>
-                </div>
 
-                {/* Treeningkava */}
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0">
-                    <Target className="w-4 h-4 text-white" />
+                  {/* Treeningkava */}
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0">
+                      <Target className="w-4 h-4 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-medium text-white text-sm mb-0.5">
+                        Treeningkava
+                      </h3>
+                      <p className="text-gray-400 text-sm leading-relaxed">
+                        Minu juhendamisel saad treeningkava, mis on kohandatud
+                        täpselt Sinu eesmärgide ja elustiiliga. Pidevalt
+                        suheldes olen Sulle toeks ja hoian motivatsiooni üleval.
+                        Sina filmid oma treeninguid ja saadad need mulle. Mina
+                        vaatan need läbi, analüüsin ja annan Sulle tagasisidet.
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-medium text-white text-sm mb-0.5">Treeningkava</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">
-                      Minu juhendamisel saad treeningkava, mis on kohandatud täpselt Sinu eesmärgide ja elustiiliga. Pidevalt suheldes olen Sulle toeks ja hoian motivatsiooni üleval. 
-                      Sina filmid oma treeninguid ja saadad need mulle. Mina vaatan need läbi, analüüsin ja annan Sulle tagasisidet.
-                    </p>
-                  </div>
-                </div>
 
-                {/* Igakuine nõustamine */}
-                <div className="flex items-start gap-3">
-                  <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0">
-                    <MessageCircle className="w-4 h-4 text-white" />
+                  {/* Igakuine nõustamine */}
+                  <div className="flex items-start gap-3">
+                    <div className="w-10 h-10 rounded-full bg-white/5 flex items-center justify-center shrink-0">
+                      <MessageCircle className="w-4 h-4 text-white" />
+                    </div>
+                    <div>
+                      <h3 className="font-medium text-white text-sm mb-0.5">
+                        Igakuine nõustamine
+                      </h3>
+                      <p className="text-gray-400 text-sm leading-relaxed">
+                        Nõustan sind toitumise, taastumise, harjumuste,
+                        suhtumise ja muude oluliste tulemusi mõjutavate
+                        faktorite osas.
+                      </p>
+                    </div>
                   </div>
-                  <div>
-                    <h3 className="font-medium text-white text-sm mb-0.5">Igakuine nõustamine</h3>
-                    <p className="text-gray-400 text-sm leading-relaxed">
-                      Nõustan sind toitumise, taastumise, harjumuste, suhtumise ja muude oluliste tulemusi mõjutavate faktorite osas.
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
+                </motion.div>
               </div>
 
               {/* Picture at bottom - spans both columns */}
@@ -172,31 +214,13 @@ export default function Online() {
                 <div className="aspect-[16/9] rounded-3xl overflow-hidden bg-white/5 border border-white/20 backdrop-blur-sm shadow-2xl transition-all duration-300 hover:border-white/30 relative group">
                   {/* Subtle glow effect */}
                   <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/[0.08] to-transparent opacity-0 group-hover:opacity-100 transition-all duration-700 ease-out -translate-x-full group-hover:translate-x-full z-10"></div>
-                  
-                  <img 
-                    src={heroImage} 
-                    alt="Online coaching" 
+
+                  <img
+                    src={heroImage}
+                    alt="Online coaching"
                     className="w-full h-full object-cover relative z-0"
                   />
                 </div>
-                
-                {/* CTA Button */}
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.6 }}
-                  className="mt-8 text-center"
-                >
-                  <Link href="/kontakt">
-                    <Button
-                      className="bg-white text-black hover:bg-gray-100 rounded-full px-8 py-6 font-medium text-base group"
-                      data-testid="button-cta-online"
-                    >
-                      Võta ühendust
-                      <ArrowRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
-                    </Button>
-                  </Link>
-                </motion.div>
               </motion.div>
             </div>
           </div>
@@ -225,21 +249,27 @@ export default function Online() {
             </div>
             <div className="flex gap-4">
               <a
-                href="#"
+                href="https://www.instagram.com/rasmuskala/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-500 hover:text-white transition-colors"
                 data-testid="link-social-instagram"
               >
                 <Instagram className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.facebook.com/rasmus.kalaa"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-500 hover:text-white transition-colors"
                 data-testid="link-social-facebook"
               >
                 <Facebook className="w-5 h-5" />
               </a>
               <a
-                href="#"
+                href="https://www.linkedin.com/in/rasmus-kala-534295157/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-500 hover:text-white transition-colors"
                 data-testid="link-social-linkedin"
               >

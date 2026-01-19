@@ -1,4 +1,5 @@
 import { Navbar } from "@/components/Navbar";
+import { SEO } from "@/components/SEO";
 import { motion } from "framer-motion";
 import { Check, ArrowRight, Instagram, Facebook, Linkedin } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -17,6 +18,7 @@ interface PriceCardProps {
   features: string[];
   popular?: boolean;
   wide?: boolean;
+  packageValue?: string;
 }
 
 function PriceCard({
@@ -26,6 +28,7 @@ function PriceCard({
   features,
   popular,
   wide,
+  packageValue,
 }: PriceCardProps) {
   if (wide) {
     return (
@@ -86,7 +89,7 @@ function PriceCard({
 
         {/* Right section - Button */}
         <div className="flex-shrink-0 lg:w-48 relative z-10">
-          <Link href="/kontakt">
+          <Link href={packageValue ? `/kontakt?pakett=${encodeURIComponent(packageValue)}` : "/kontakt"}>
             <Button
               className={`w-full rounded-full font-medium py-6 ${
                 popular
@@ -167,7 +170,7 @@ function PriceCard({
       </ul>
 
       <div className="relative z-10">
-        <Link href="/kontakt">
+        <Link href={packageValue ? `/kontakt?pakett=${encodeURIComponent(packageValue)}` : "/kontakt"}>
           <Button
             className={`w-full rounded-full font-medium py-6 ${
               popular
@@ -192,6 +195,7 @@ export default function Hinnakiri() {
       title: "1x Personaaltreening",
       price: "60€",
       description: "Ideaalne alustuseks",
+      packageValue: "1x-personaaltreening",
       features: [
         "Saame tuttavaks",
         "Teeme näidisteeningu",
@@ -203,6 +207,7 @@ export default function Hinnakiri() {
       title: "Personaaltreening sõbraga",
       price: "78€",
       description: "Treeni koos sõbraga",
+      packageValue: "personaaltreening-sobraga",
       features: [
         "Saame tuttavaks",
         "Paneme paika esialgsed eesmärgid Teie mõlema jaoks",
@@ -215,6 +220,7 @@ export default function Hinnakiri() {
       price: "366€",
       description: "Terviklik treeningpakett",
       popular: true,
+      packageValue: "7x-personaaltreening",
       features: [
         "Pikemaajalisem investeering",
         "Paneme paika esialgsed eesmärgid",
@@ -227,6 +233,7 @@ export default function Hinnakiri() {
       title: "7x Personaaltreening sõbraga",
       price: "479€",
       description: "Terviklik pakett kahele",
+      packageValue: "7x-personaaltreening-sobraga",
       features: [
         "Treening koos sõbraga",
         "Eesmärgid Teie mõlema jaoks",
@@ -239,17 +246,19 @@ export default function Hinnakiri() {
       title: "Treeningkava",
       price: "60€/kuu",
       description: "Personaalne treeningkava",
+      packageValue: "treeningkava",
       features: [
         "Sinu võimetele vastav",
         "Eesmärgipärane",
         "Progresseeruv",
-        "Kestus - 4 nädalat",
+        "Kestus - 1 kuu",
       ],
     },
     {
-      title: "Online juhendamine",
-      price: "150€",
+      title: "Online juhendamine 1 kuu",
+      price: "140€",
       description: "Kuupõhine juhendamine",
+      packageValue: "online-juhendamine",
       features: [
         "Kuupõhine kava",
         "Privaatne ja personaalne lähenemine",
@@ -260,8 +269,9 @@ export default function Hinnakiri() {
     },
     {
       title: "Online juhendamine 3 kuud",
-      price: "450€",
+      price: "395€",
       description: "Pikaajaline juhendamine",
+      packageValue: "online-juhendamine-3-kuud",
       features: [
         "Kuupõhine kava",
         "Privaatne ja personaalne lähenemine",
@@ -275,24 +285,32 @@ export default function Hinnakiri() {
       title: "Kuupõhine liikmesus 1-treening nädalas",
       price: "Alates 180€",
       description: "Püsikliendi kuupõhised paketid",
+      packageValue: "1x-nadalas-kuupõhine",
       features: ["1-treening nädalas - 45 eur treening"],
     },
     {
       title: "Kuupõhine liikmesus 2-treeningut nädalas",
       price: "Alates 320€",
       description: "Püsikliendi kuupõhised paketid",
+      packageValue: "2x-nadalas-kuupõhine",
       features: ["2-treeningut nädalas - 40 eur treening"],
     },
     {
       title: "Kuupõhine liikmesus 3-treeningut nädalas",
       price: "Alates 420€",
       description: "Püsikliendi kuupõhised paketid",
+      packageValue: "3x-nadalas-kuupõhine",
       features: ["3-treeningut nädalas - 35 eur treening"],
     },
   ];
 
   return (
     <div className="min-h-screen bg-background text-foreground">
+      <SEO
+        title="Harrastaja hinnakiri"
+        description="Personaaltreeningu hinnad harrastajatele. Vali endale sobiv pakett - alusta ühe treeninguga või vali terviklik pakett."
+        url="https://rasmuskala.ee/harrastaja-hinnakiri"
+      />
       <Navbar />
 
       {/* Hero */}
@@ -429,6 +447,8 @@ export default function Hinnakiri() {
             <div className="flex gap-4">
               <a
                 href="https://www.instagram.com/rasmuskala/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-500 hover:text-white transition-colors"
                 data-testid="link-social-instagram"
               >
@@ -436,6 +456,8 @@ export default function Hinnakiri() {
               </a>
               <a
                 href="https://www.facebook.com/rasmus.kalaa"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-500 hover:text-white transition-colors"
                 data-testid="link-social-facebook"
               >
@@ -443,6 +465,8 @@ export default function Hinnakiri() {
               </a>
               <a
                 href="https://www.linkedin.com/in/rasmus-kala-534295157/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="text-gray-500 hover:text-white transition-colors"
                 data-testid="link-social-linkedin"
               >

@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -9,6 +9,7 @@ import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { ArrowRight, Loader2, CheckCircle } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import { useLocation } from "wouter";
 
 // Formspree vorm - loo tasuta konto formspree.io ja asenda see oma vormi ID-ga
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mdakdjbw";
@@ -17,35 +18,35 @@ const packageCategories = [
   {
     category: "Harrastajad",
     packages: [
-      { value: "1x-personaaltreening", label: "1x Personaaltreening - 60€" },
-      { value: "personaaltreening-sobraga", label: "Personaaltreening sõbraga - 78€" },
-      { value: "7x-personaaltreening", label: "7x Personaaltreening - 366€" },
-      { value: "7x-personaaltreening-sobraga", label: "7x Personaaltreening sõbraga - 479€" },
-      { value: "treeningkava", label: "Treeningkava - 60€" },
+  { value: "1x-personaaltreening", label: "1x Personaaltreening - 60€" },
+  { value: "personaaltreening-sobraga", label: "Personaaltreening sõbraga - 78€" },
+  { value: "7x-personaaltreening", label: "7x Personaaltreening - 366€" },
+  { value: "7x-personaaltreening-sobraga", label: "7x Personaaltreening sõbraga - 479€" },
+  { value: "treeningkava", label: "Treeningkava - 60€" },
     ],
   },
   {
     category: "Sportlased",
     packages: [
-      { value: "1x-ÜKE-treening", label: "ÜKE sportlasele - 80€" },
-      { value: "7x-ÜKE-treening", label: "7x ÜKE sportlasele - 366€" },
-      { value: "grupitreening", label: "Grupitreening (Max 4 inimest) - 100€" },
-      { value: "sportlase-treeningkava", label: "Treeningkava sportlasele - 80€" },
+  { value: "1x-ÜKE-treening", label: "ÜKE sportlasele - 80€" },
+  { value: "7x-ÜKE-treening", label: "7x ÜKE sportlasele - 366€" },
+  { value: "grupitreening", label: "Grupitreening (Max 4 inimest) - 100€" },
+  { value: "sportlase-treeningkava", label: "Treeningkava sportlasele - 80€" },
     ],
   },
   {
     category: "Online coaching",
     packages: [
-      { value: "online-juhendamine", label: "Online juhendamine - 150€/kuu" },
-      { value: "online-juhendamine-3-kuud", label: "Online juhendamine 3 kuud - 450€" },
+  { value: "online-juhendamine", label: "Online juhendamine - 150€/kuu" },
+  { value: "online-juhendamine-3-kuud", label: "Online juhendamine 3 kuud - 450€" },
     ],
   },
   {
     category: "Kuupõhised paketid",
     packages: [
-      { value: "1x-nadalas-kuupõhine", label: "Kuupõhine liikmesus 1-treening nädalas - 180€" },
-      { value: "2x-nadalas-kuupõhine", label: "Kuupõhine liikmesus 2-treening nädalas - 320€" },
-      { value: "3x-nadalas-kuupõhine", label: "Kuupõhine liikmesus 3-treening nädalas - 420€" },
+  { value: "1x-nadalas-kuupõhine", label: "Kuupõhine liikmesus 1-treening nädalas - 180€" },
+  { value: "2x-nadalas-kuupõhine", label: "Kuupõhine liikmesus 2-treening nädalas - 320€" },
+  { value: "3x-nadalas-kuupõhine", label: "Kuupõhine liikmesus 3-treening nädalas - 420€" },
     ],
   },
 ];
@@ -66,16 +67,31 @@ export function ContactForm() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const { toast } = useToast();
+  const [location] = useLocation();
+  
+  // Get package from URL query parameter
+  const getPackageFromUrl = () => {
+    const params = new URLSearchParams(window.location.search);
+    return params.get("pakett") || "";
+  };
   
   const form = useForm<ContactFormData>({
     resolver: zodResolver(contactFormSchema),
     defaultValues: {
       name: "",
       email: "",
-      selectedPackage: "",
+      selectedPackage: getPackageFromUrl(),
       message: "",
     },
   });
+
+  // Update form when URL changes
+  useEffect(() => {
+    const packageFromUrl = getPackageFromUrl();
+    if (packageFromUrl) {
+      form.setValue("selectedPackage", packageFromUrl);
+    }
+  }, [location]);
 
   const onSubmit = async (data: ContactFormData) => {
     setIsSubmitting(true);
@@ -183,13 +199,13 @@ export function ContactForm() {
                         {category.category}
                       </div>
                       {category.packages.map((pkg) => (
-                        <SelectItem 
-                          key={pkg.value} 
-                          value={pkg.value}
+                    <SelectItem 
+                      key={pkg.value} 
+                      value={pkg.value}
                           className="text-white focus:bg-white/10 focus:text-white pl-6"
-                        >
-                          {pkg.label}
-                        </SelectItem>
+                    >
+                      {pkg.label}
+                    </SelectItem>
                       ))}
                     </div>
                   ))}

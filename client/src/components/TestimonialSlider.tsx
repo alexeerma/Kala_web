@@ -3,22 +3,22 @@ import { useState, useRef } from "react";
 
 const testimonials = [
   {
-    quote: "Ma ei uskunud, et suudan sellised tulemused saavutada vaid 3 kuuga. Distsipliin, mida siin õppisin, muutis mu elu.",
+    quote: "Soovitan, Rasmus leiab alati lahendused probleemidele ja suudab teha kavasid lähtuvalt sportlase vajadusest.",
     author: "Aleksander",
     authorJob: "BigBank Tartu võrkpallur"
   },
   {
-    quote: "Tähelepanu detailidele vormi ja tehnika osas on võrratu. Mingeid vigastusi, ainult puhas progress.",
+    quote: "Olen Rasmusega treeninud 2,5 aastat, tunnen ennast võistlustel enesekindlamalt ja jõusaalis tugevamana, meeldib, et jõusaali kavad on mitmekülgsed ja arvestavad ka minu spordialaga! On näha, et hoolib oma treenitavatest ja on oma enda elustiiliga heaks eeskujuks!",
     author: "Katriin",
     authorJob: "Kestvusratsutaja"
   },
   {
-    quote: "See on väljakutsuv, see on tasustav ja see on absoluutselt iga treeningu väärt. Parim investeering endasse.",
+    quote: "Tundsin ennast hooaja sees kiiremalt ja võimsamalt, soovitan noor-sportlastele, kes tahavad enda füüsilist võimekust arendada!",
     author: "Kaur",
     authorJob: "Korvpallur"
   },
   {
-    quote: "Professionaalne lähenemine ja individuaalne tähelepanu igal treeningul. Soovitan soojalt!",
+    quote: "Rasmus on väga äge isiksus ja suurepärane treener. Ta on sotsiaalne, toetav ning oskab luua mõnusa ja motiveeriva õhkkonna. Iga trenn on huvitav, mitmekesine ja alati kohandatud vastavalt treenitava vajadustele.",
     author: "Tauri Kilk",
     authorJob: "Eesti esi meessulgpallur"
   },
@@ -28,12 +28,12 @@ const testimonials = [
     authorJob: "Harrastussportlane"
   },
   {
-    quote: "Lõpuks ometi treener, kes mõistab minu eesmärke ja aitab neid saavutada. Olen väga tänulik!",
+    quote: "Olin jõutreeningutega eelnevalt vähe kokkupuutunud, Rasmusega treenima hakkates sain aru, et jõutrenn võib väga meeldiv olla ja nüüd see on minu igapäeva osa mida alati ootan!",
     author: "Annika",
     authorJob: "Harrastus tennisist"
   },
   {
-    quote: "Lõpuks ometi treener, kes mõistab minu eesmärke ja aitab neid saavutada. Olen väga tänulik!",
+    quote: "Olen peaaegu aasta Rasmus Kalaga koostööd teinud ning kogu see aeg on meil koostöö sujunud suurepäraselt. ",
     author: "Kaspar",
     authorJob: "Sulgpallur"
   },
@@ -41,16 +41,6 @@ const testimonials = [
     quote: "Lõpuks ometi treener, kes mõistab minu eesmärke ja aitab neid saavutada. Olen väga tänulik!",
     author: "Kaspar Kort",
     authorJob: "Maadleja"
-  },
-  {
-    quote: "Lõpuks ometi treener, kes mõistab minu eesmärke ja aitab neid saavutada. Olen väga tänulik!",
-    author: "Indrek",
-    authorJob: "Ettevõtja"
-  },
-  {
-    quote: "Lõpuks ometi treener, kes mõistab minu eesmärke ja aitab neid saavutada. Olen väga tänulik!",
-    author: "Richard",
-    authorJob: "Padelimängija"
   }
 ];
 
